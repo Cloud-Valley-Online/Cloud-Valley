@@ -69,7 +69,7 @@
                 @isset($posts)
                     @foreach ($posts as $post)
                         <div class="row post-area p-2">
-                            <div class="col-sm-2 text-center post-avi-side test">
+                            <div class="col-sm-2 text-center post-avi-side">
     
                                 <div class="row post-username">
                                     <div class="col">
