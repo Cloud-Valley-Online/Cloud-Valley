@@ -1,0 +1,47 @@
+Forums
+maybe a mix between traditional forums & reddit.
+staff-badge like twitter
+
+random notes
+shops - three day rotation?
+abaility to add notes when blocking some1 (wqhy they were blocked)
+
+avatar_Items
+    item_id, item_name, item_image, item_special_type, item_type, item_rarity, item_is_parent, item_layer, item_order
+
+avatar_Layers
+    id, layer_name, order,
+
+avatar_item_tags
+
+avatar_user_item_tags
+
+avatar_items_relations
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `child_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Parent` (`parent_id`),
+  KEY `Child` (`child_id`)
+
+avatar_layer_tabs
+CREATE TABLE `avatar_layer_tabs` (
+  `tab_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tab_name` varchar(32) NOT NULL,
+  tab_order
+  PRIMARY KEY (`tab_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+REATE TABLE `avatar_item_parts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) unsigned NOT NULL,
+  `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  `layer` int(11) unsigned NOT NULL,
+  `image_path` char(60) COLLATE utf8_unicode_ci NOT NULL,
+  `gender` enum('Unisex','Male','Female','Unknown') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Unknown',
+  PRIMARY KEY (`id`),
+  KEY `layer` (`layer`),
+  KEY `item_id` (`item_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 CO
+
