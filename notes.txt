@@ -7,7 +7,7 @@ shops - three day rotation?
 abaility to add notes when blocking some1 (wqhy they were blocked)
 
 avatar_Items
-    item_id, item_name, item_image, item_special_type, itm_type, item_rarity, item_is_parent, item_layer, item_order
+    item_id, item_name, item_image, item_special_type, item_type, item_rarity, item_is_parent, item_layer, item_order
 
 avatar_Layers
     id, layer_name, order,
