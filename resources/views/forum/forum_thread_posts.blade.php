@@ -21,9 +21,9 @@
         <div class="row">
             <hr>
             <div class="col-sm-12 breadcrumbs">
-                <a href="">Forums >></a>
-                <a href="">Forums >></a>
-                <a href="">Forums</a>
+                <a href="">Gaia Community ></a>
+                <a href="">Gaia Forums >></a>
+                <a href="">Chatterbox</a>
             </div>
             <hr>
 
@@ -31,7 +31,7 @@
 
         <div class="row title-area pb-2">
             <div class="col-sm-10">
-                <h2>This is the first thread!</h2>
+                <h2><i class="fa-regular fa-file"></i> This is the first thread!</h2>
             </div>
             <div class="col-sm-2 thread-buttons">
                 <div class="row align-items-start">
@@ -72,16 +72,20 @@
                             <div class="col-sm-2 post-avi-side">
                                 <div class="row post-username">
                                     <div class="col">
-                                        (flar)
-                                        <b>Spring</b> (?)
+                                        <img src="//graphics.gaiaonline.com/images/usericons/b15c767d65e9.png" alt="flare">
+                                        <b style="text-shadow: 0px 0px 6px #ff0000;
+                                        position: relative;
+                                        right: 5px;
+                                        bottom: 1px;
+                                        color: #333333;">Spring</b>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" style="position:relative; bottom:10px; left:15px;">
                                     <div class="col">
-                                        Administrator
+                                        <small style="color">Administrator</small> 
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" style="position:relative; bottom:10px;">
                                     <div class="col">
                                         <img class="avatar-normal"
                                             src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/c1/01/7fc8ff4b27701c1_flip.png?t=1670122533_6.00_11"
