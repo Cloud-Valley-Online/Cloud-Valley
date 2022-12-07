@@ -46,3 +46,23 @@ REATE TABLE `avatar_item_parts` (
   KEY `item_id` (`item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 CO
 
+CREATE TABLE `user_items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `equipped` int(11) unsigned NOT NULL DEFAULT '0',
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `trying_on` int(1) unsigned NOT NULL,
+  `soft_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `soft_deleted_by_user_id` int(11) DEFAULT NULL,
+  `sent_by` int(11) DEFAULT NULL,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `parent_id` (`parent_id`),
+  KEY `item_id` (`item_id`),
+  KEY `user_id` (`user_id`),
+  KEY `soft_deleted` (`soft_deleted`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+

@@ -17,7 +17,7 @@
             
         }
     </style>
-    <div class="container-fluid posts-main-content-wrapper" style="margin-top:50px;">
+    <div class="container-fluid posts-main-content-wrapper">
         <div class="row">
             <hr>
             <div class="col-sm-12 breadcrumbs">
@@ -67,24 +67,20 @@
             <div class="container">
             <div class="row posts">
                 @isset($posts)
-                    @foreach ($posts as $post)
+                    @foreach ($posts as $key => $post)
                         <div class="row post-area p-2">
-                            <div class="col-sm-2 text-center post-avi-side">
-    
+                            <div class="col-sm-2 post-avi-side">
                                 <div class="row post-username">
                                     <div class="col">
                                         (flar)
                                         <b>Spring</b> (?)
                                     </div>
-    
                                 </div>
-    
                                 <div class="row">
                                     <div class="col">
                                         Administrator
                                     </div>
                                 </div>
-    
                                 <div class="row">
                                     <div class="col">
                                         <img class="avatar-normal"
@@ -92,7 +88,6 @@
                                             alt="avatar">
                                     </div>
                                 </div>
-    
                                 <div class="row">
                                     <div class="col">
                                         <div class="dropdown">
@@ -107,9 +102,6 @@
                                           </div>
                                     </div>
                                 </div>
-    
-    
-    
                             </div>
                             <div class="col-sm-10">
                                 <div class="row post-buttons mt-2">
@@ -121,15 +113,13 @@
                                 </div>
     
                                 <div class="row post-bubble">
-                                    <div class="col post mt-3 rounded" style="border:2px solid #818181; ">
-                                        oi
+                                    <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
+                                        {{ $post->post_text }}
                                     </div>
                                 </div>
                             </div>
                         </div>
-    
                         <hr>
-    
                         <div class="row post-area p-2">
                             <div class="col-sm-10" >
     
@@ -146,7 +136,6 @@
                                         dddddd
                                     </div>
                                 </div>
-    
                             </div>
                             <div class="col-sm-2 text-center" >
                                 <div class="row post-username">
@@ -191,12 +180,6 @@
                     @endforeach
                 @endisset
             </div>
-            
         </div>
-   
     </div>
-
-    <footer>
-        hey
-    </footer>
 @endsection
