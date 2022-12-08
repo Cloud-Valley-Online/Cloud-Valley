@@ -5,13 +5,36 @@ abbility to add discord, twitch etc
 
 random notes
 shops - three day rotation?
-abaility to add notes when blocking some1 (wqhy they were blocked)
+abaility to add notes when blocking some1 (why they were blocked)
+
+
+walking through the avi ENGINE
+grab item (Long pony-tail hair) ITEM_ID 2
+-JOIN Item Parts (top, bangs, pony-tail) ID 1, ON Item_ID 2
+-JOIN children of item (avatar_items_relations) ITEM_ID 3 parent_id 2
+-Check if children also has parts if so, JOIN on child_id (for avatar_item_parts) ON item_id 3
+-JOIN avatar_layers
+-JOIN avatar_layer_tabs
+-JOIN avatar_item_tags on Item_ID (remember, it's the main items ITEM_ID)
+-JOIN user_item_tags on Item_ID (remember, it's the main items ITEM_ID)
+
+
+
 
 avatar_Items
     item_id, item_name, item_image, item_thumb, item_special_type (enum), item_type, item_rarity, item_composite, item_layer, item_order
 
 avatar_Layers
-    id, layer_name, order,
+    id, layer_name, order, 'main_tab'
+
+avatar_layer_tabs
+CREATE TABLE `avatar_layer_tabs` (
+  `tab_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tab_name` varchar(32) NOT NULL,
+  tab_order
+  PRIMARY KEY (`tab_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 avatar_item_tags
 
@@ -25,22 +48,13 @@ avatar_items_relations
   KEY `Parent` (`parent_id`),
   KEY `Child` (`child_id`)
 
-avatar_layer_tabs
-CREATE TABLE `avatar_layer_tabs` (
-  `tab_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tab_name` varchar(32) NOT NULL,
-  tab_order
-  PRIMARY KEY (`tab_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
-REATE TABLE `avatar_item_parts` (
+CREATE TABLE `avatar_item_parts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `item_id` int(11) unsigned NOT NULL,
+  `parent_item_id` int(11) unsigned NOT NULL,
   `name` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `layer` int(11) unsigned NOT NULL,
   `image_path` char(60) COLLATE utf8_unicode_ci NOT NULL,
-  `gender` enum('Unisex','Male','Female','Unknown') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Unknown',
   PRIMARY KEY (`id`),
   KEY `layer` (`layer`),
   KEY `item_id` (`item_id`)
