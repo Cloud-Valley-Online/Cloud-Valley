@@ -7,8 +7,14 @@ random notes
 shops - three day rotation?
 abaility to add notes when blocking some1 (why they were blocked)
 
+Users
+(i may want username and username clean to keep caps & better searching)
 
-walking through the avi ENGINE
+items
+item hover - FULL info madatory would make things much easier.
+
+
+walking through the avi ENGINE item display
 grab item (Long pony-tail hair) ITEM_ID 2
 -JOIN Item Parts (top, bangs, pony-tail) ID 1, ON Item_ID 2
 -JOIN children of item (avatar_items_relations) ITEM_ID 3 parent_id 2

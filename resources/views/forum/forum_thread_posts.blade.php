@@ -21,9 +21,9 @@
             content: none;
         }
     </style>
-    <div class="container-fluid posts-main-content-wrapper">
+    <div class="container posts-main-content-wrapper ">
         <div class="row">
-            <hr>
+
             <div class="col-sm-10 breadcrumbs">
                 <a href="">Gaia Community ></a>
                 <a href="">Gaia Forums >></a>
@@ -100,7 +100,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="dropdown">
-                                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fa-solid fa-face-smile" style="color:yellow;"></i> Online
                                             </button>
                                             <ul class="dropdown-menu">
@@ -172,7 +172,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="dropdown">
-                                            <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fa-regular fa-face-smile"></i> online
                                             </button>
                                             <ul class="dropdown-menu">

@@ -9,19 +9,23 @@
     }
 
     .nav-tabs {
-        --bs-nav-tabs-border-width: px;
+    --bs-nav-tabs-border-width: px;
     --bs-nav-tabs-border-color: #dee2e6;
     --bs-nav-tabs-border-radius: 0.375rem;
-    --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
+    --bs-nav-tabs-link-hover-border-color: #4e6c9a #4e6c9a #4e6c9a !important;
     --bs-nav-tabs-link-active-color: #495057;
     --bs-nav-tabs-link-active-bg: #f8fafc;
     --bs-nav-tabs-link-active-border-color: #4e6c9a #4e6c9a #4e6c9a !important;
     border-bottom: 5px solid #4e6c9a !important;
 }
+
+.forum-nav {
+    --bs-nav-link-color: none !important;
+}
 </style>
 
 @section('content')
-    <div class="container-fluid main-content-wrapper">
+    <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
         <div class="row">
             <div class="col-12 d-sm-none d-md-block">
                 <!-- Nested Row to hide on mobile -->
@@ -110,7 +114,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="w-75 mx-auto">
-                    <ul class="nav nav-tabs mb-5">
+                    <ul class="nav nav-tabs forum-nav mb-5">
                         <li class="nav-item">
                           <a class="nav-link active" style="background:#4d6c99; color:white;" href="#">Forum List</a>
                         </li>
@@ -225,219 +229,6 @@
                     @endisset
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="w-75 mx-auto">
-                    <a href="" class="text-decoration-none bolder" style="color:#4e6c9a;">
-                        <h3>General Forums</h3>
-                    </a>
-                    <div style="border:1px solid #4d6c99;"></div>
-                </div>
-                <div class="main-content w-75 mx-auto p-3 my-3 border" style="background:white; border-color: #edf4fa;">
-                    @isset($forums)
-                        @foreach ($forums as $forum)
-                            <div class="row">
-                                <div class="col-1">
-                                    <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif"
-                                        class="img-rounded" alt="Chatterbox">
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
-                                        class="text-decoration-none">
-                                        <h5 style="color:#4e6c9a;">
-                                            {{ $forum->forum_name }}
-                                        </h5>
-                                    </a>
-                                    <p>Welcome to the Chatterbox! Stay around and have fun.</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 my-4">
-                                    <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                        class="px-1">Threads 50k</span> <span style="color:#5c656f; font-size: 80%;">Posts:
-                                        100K</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot">
-                                    <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a new
-                                        thread come join me us...</a>
-                                    <small style="color:#5c656f;">
-                                        Posted: Today at 2:27 PM
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="row" style="background-color:#edf4fa">
-                                <div class="col-1">
-                                    <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif"
-                                        class="img-rounded" alt="Chatterbox">
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
-                                        class="text-decoration-none">
-                                        <h5 style="color:#4e6c9a;">
-                                            {{ $forum->forum_name }}
-                                        </h5>
-                                    </a>
-                                    <p>Welcome to the Chatterbox! Stay around and have fun.</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 my-4">
-                                    <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                        class="px-1">Threads 50k</span> <span style="color:#5c656f; font-size: 80%;">Posts:
-                                        100K</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot">
-                                    <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a new
-                                        thread come join me us...</a>
-                                    <small style="color:#5c656f;">
-                                        Posted: Today at 2:27 PM
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif"
-                                        class="img-rounded" alt="Chatterbox">
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
-                                        class="text-decoration-none">
-                                        <h5 style="color:#4e6c9a;">
-                                            {{ $forum->forum_name }}
-                                        </h5>
-                                    </a>
-                                    <p>Welcome to the Chatterbox! Stay around and have fun.</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 my-4">
-                                    <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                        class="px-1">Threads 50k</span> <span style="color:#5c656f; font-size: 80%;">Posts:
-                                        100K</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot">
-                                    <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a new
-                                        thread come join me us...</a>
-                                    <small style="color:#5c656f;">
-                                        Posted: Today at 2:27 PM
-                                    </small>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endisset
-                </div>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="w-75 mx-auto">
-                    <a href="" class="text-decoration-none bolder" style="color:#4e6c9a;">
-                        <h3>General Forums</h3>
-                    </a>
-                    <div style="border:1px solid #4d6c99;"></div>
-                </div>
-                <div class="main-content w-75 mx-auto p-3 my-3 border" style="background:white; border-color: #edf4fa;">
-                    @isset($forums)
-                        @foreach ($forums as $forum)
-                            <div class="row">
-                                <div class="col-1">
-                                    <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif"
-                                        class="img-rounded" alt="Chatterbox">
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
-                                        class="text-decoration-none">
-                                        <h5 style="color:#4e6c9a;">
-                                            {{ $forum->forum_name }}
-                                        </h5>
-                                    </a>
-                                    <p>Welcome to the Chatterbox! Stay around and have fun.</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 my-4">
-                                    <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                        class="px-1">Threads 50k</span> <span style="color:#5c656f; font-size: 80%;">Posts:
-                                        100K</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot">
-                                    <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a new
-                                        thread come join me us...</a>
-                                    <small style="color:#5c656f;">
-                                        Posted: Today at 2:27 PM
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="row" style="background-color:#edf4fa">
-                                <div class="col-1">
-                                    <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif"
-                                        class="img-rounded" alt="Chatterbox">
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
-                                        class="text-decoration-none">
-                                        <h5 style="color:#4e6c9a;">
-                                            {{ $forum->forum_name }}
-                                        </h5>
-                                    </a>
-                                    <p>Welcome to the Chatterbox! Stay around and have fun.</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 my-4">
-                                    <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                        class="px-1">Threads 50k</span> <span style="color:#5c656f; font-size: 80%;">Posts:
-                                        100K</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot">
-                                    <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a new
-                                        thread come join me us...</a>
-                                    <small style="color:#5c656f;">
-                                        Posted: Today at 2:27 PM
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-1">
-                                    <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif"
-                                        class="img-rounded" alt="Chatterbox">
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
-                                        class="text-decoration-none">
-                                        <h5 style="color:#4e6c9a;">
-                                            {{ $forum->forum_name }}
-                                        </h5>
-                                    </a>
-                                    <p>Welcome to the Chatterbox! Stay around and have fun.</p>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-3 my-4">
-                                    <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                        class="px-1">Threads 50k</span> <span style="color:#5c656f; font-size: 80%;">Posts:
-                                        100K</span>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-4">
-                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot">
-                                    <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a new
-                                        thread come join me us...</a>
-                                    <small style="color:#5c656f;">
-                                        Posted: Today at 2:27 PM
-                                    </small>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endisset
-                </div>
-            </div>
-        </div>
+        </div> 
     </div>
 @endsection

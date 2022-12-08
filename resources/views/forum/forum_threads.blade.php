@@ -3,10 +3,10 @@
 @section('title', 'Gaiaonline')
 
 @section('content')
-    <div class="container-fluid main-content-wrapper">    
+    <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">    
         <div class="row">
             <div class="col-sm-12">
-                <div class="main-content border w-75 border-dark rounded mx-auto py-3 my-3" style="background:white;">
+                <div class="main-content border border-dark rounded mx-auto py-3 my-3" style="background:white;">
                    
                     @isset($threads) 
                         @foreach ($threads as $thread)
