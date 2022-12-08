@@ -178,16 +178,7 @@
         </div>
     </div>
     
-    <div class="container-fluid main-content-wrapper" style="margin-top:50px;">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="main-content border w-75 border-dark rounded mx-auto py-3 my-3" style="background:white;">
-                coontent
-                </div>
-            </div>
-        </div>
-       
-    </div>
+   home
 </body>
 
 </html>

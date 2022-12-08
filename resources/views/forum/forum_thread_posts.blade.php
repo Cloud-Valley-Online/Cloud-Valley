@@ -16,22 +16,32 @@
             font-family: arial;
             
         }
+
+        .dropdown-toggle::after {
+            content: none;
+        }
     </style>
     <div class="container-fluid posts-main-content-wrapper">
         <div class="row">
             <hr>
-            <div class="col-sm-12 breadcrumbs">
+            <div class="col-sm-10 breadcrumbs">
                 <a href="">Gaia Community ></a>
                 <a href="">Gaia Forums >></a>
                 <a href="">Chatterbox</a>
+            </div>
+
+            <div class="col-sm-2">
+                    <div class="pagination">
+                        <a href="">1</a><a href="">2</a><a href="">3</a>.......  <a href="">45 </a><a href=""> 46</a>
+                     </div>
             </div>
             <hr>
 
         </div>
 
-        <div class="row title-area pb-2">
+        <div class="row title-area pb-2 mb-5">
             <div class="col-sm-10">
-                <i class="fa-regular fa-file"></i><h2> This is the first thread!</h2>
+                <h2> <i class="fa-regular fa-file" style="font-size: 20px;"></i> This is the first thread!</h2>
             </div>
             <div class="col-sm-2 thread-buttons">
                 <div class="row align-items-start">
@@ -42,7 +52,6 @@
                             <a href="#" class="btn btn-primary">Move</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -52,12 +61,8 @@
                     <div class="row align-items-start">
                         <div class="col">
                             <button type="button" class="btn btn-primary">Reply</button>
-                            <button type="button" class="btn btn-primary">Subscrive</button>
+                            <button type="button" class="btn btn-primary">Subscribe</button>
                             <button type="button" class="btn btn-primary">Report</button>
-
-                            <div class=" pagination">
-                               <a href="">1</a><a href="">2</a><a href="">3</a>
-                            </div>
                         </div>
     
                     </div>
@@ -96,7 +101,7 @@
                                     <div class="col">
                                         <div class="dropdown">
                                             <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                              Dropdown button
+                                                <i class="fa-solid fa-face-smile" style="color:yellow;"></i> Online
                                             </button>
                                             <ul class="dropdown-menu">
                                               <li><a class="dropdown-item" href="#">Action</a></li>
@@ -118,7 +123,7 @@
     
                                 <div class="row post-bubble">
                                     <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
-                                        {{ $post->post_text }}
+                                        <p style="font-weight:100;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis nam aspernatur doloribus quo repudiandae aut sequi cupiditate fuga eius et ipsum quaerat at rem, quas nostrum voluptatum id! Architecto, rerum!</p>
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +173,7 @@
                                     <div class="col">
                                         <div class="dropdown">
                                             <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                              Dropdown button
+                                                <i class="fa-regular fa-face-smile"></i> online
                                             </button>
                                             <ul class="dropdown-menu">
                                               <li><a class="dropdown-item" href="#">Action</a></li>
