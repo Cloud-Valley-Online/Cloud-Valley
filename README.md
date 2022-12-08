@@ -9,10 +9,10 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Avatar engine in development
+## Avatar game in development
 
-I'm sure I will add pretty screenshots and information at a later date ~
+I'm sure I will add pretty screenshots and more information at a later date. For now, we CODING!
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Alt text](https://via.placeholder.com/468x300 "Place holder image")
 
 
