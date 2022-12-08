@@ -25,6 +25,9 @@ return new class extends Migration
             $table->integer('account_status');
             $table->integer("can_trade")->default(1);
             $table->string("avatar_path");
+            $table->integer('posts')->default(0);
+            $table->integer('items_owned')->default(0);
+            $table->integer('flare_equipped')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

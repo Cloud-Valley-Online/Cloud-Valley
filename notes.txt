@@ -19,7 +19,12 @@ grab item (Long pony-tail hair) ITEM_ID 2
 -JOIN user_item_tags on Item_ID (remember, it's the main items ITEM_ID)
 
 
-
+forum_flares
+-id
+-name
+-image_path
+-text-shadow
+-color
 
 avatar_Items
     item_id, item_name, item_image, item_thumb, item_special_type (enum), item_type, item_rarity, item_composite, item_layer, item_order
