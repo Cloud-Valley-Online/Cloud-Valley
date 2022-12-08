@@ -13,6 +13,6 @@
 
 I'm sure I will add pretty screenshots and more information at a later date. For now, we CODING!
 
-![Alt text](https://via.placeholder.com/468x300 "Place holder image")
+
 
 
