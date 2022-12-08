@@ -31,7 +31,7 @@
 
         <div class="row title-area pb-2">
             <div class="col-sm-10">
-                <h2><i class="fa-regular fa-file"></i> This is the first thread!</h2>
+                <i class="fa-regular fa-file"></i><h2> This is the first thread!</h2>
             </div>
             <div class="col-sm-2 thread-buttons">
                 <div class="row align-items-start">
