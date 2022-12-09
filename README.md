@@ -11,7 +11,7 @@
 
 ## Avatar game in development
 
-I'm sure I will add pretty screenshots and more information at a later date. For now, we CODING!
+I'm sure I will add pretty screenshots and more information at a later date. 
 
 
 
