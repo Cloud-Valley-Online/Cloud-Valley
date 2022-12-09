@@ -14,6 +14,9 @@ items
 item hover - FULL info madatory would make things much easier.
 
 
+Git
+update so my user counts...?
+
 walking through the avi ENGINE item display
 grab item (Long pony-tail hair) ITEM_ID 2
 -JOIN Item Parts (top, bangs, pony-tail) ID 1, ON Item_ID 2
