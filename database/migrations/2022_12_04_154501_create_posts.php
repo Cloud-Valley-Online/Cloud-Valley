@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer("forum_id");
             $table->integer("thread_id");
-            $table->string("post_text");
+            $table->mediumText("post_text");
             $table->string("post_author");
             $table->ipAddress('post_author_ip_address');
             $table->integer("post_tipped")->default(0);

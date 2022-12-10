@@ -29,14 +29,12 @@
         <div class="header-content row">
             <div class="row header-currency">
                 <div class="col-8"></div>
-
                 @if (Auth::check())
                     <div class="col-4 white">
                         <div class="row">
-                            <div class="col-sm-3">Dive</div>
                             <div class="col-sm-3">Coins</div>
                             <div class="col-sm-3">Cash</div>
-                            <div class="col-sm-3">account</div>
+                            <div class="col-sm-3">Account</div>
                         </div>
                     </div>
                 @endif
@@ -69,14 +67,27 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href={{ url("/home") }}>Home</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    My-[Site]
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item"  href={{ url("/home") }}>Home</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href={{ url("/currency") }}>[Currency]</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                <a class="nav-link" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Shops
                                 </a>
@@ -89,8 +100,19 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href={{ url("/forum") }} class="nav-link">Forums</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Forums
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item"  href={{ url("/forum") }}>Forum</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
                             </li>
 
                             <li class="nav-item">
@@ -129,16 +151,7 @@
                     <i class="fab fa-twitter"></i>
                 </a>
                 <a href="" class="me-4 text-reset">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
                     <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-github"></i>
                 </a>
             </div>
             <!-- Right -->
