@@ -1,0 +1,15 @@
+.card-img {
+    filter: brightness(50%);
+}
+
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: 1px;
+    --bs-nav-tabs-border-color: #dee2e6;
+    --bs-nav-tabs-border-radius: 0.375rem;
+    --bs-nav-tabs-link-hover-border-color: #4e6c9a #4e6c9a #4e6c9a !important;
+    --bs-nav-tabs-link-active-color: #495057;
+    --bs-nav-tabs-link-active-bg: #f8fafc;
+    --bs-nav-tabs-link-active-border-color: #4e6c9a #4e6c9a #4e6c9a !important;
+    border-bottom: 5px solid #4e6c9a !important;
+}

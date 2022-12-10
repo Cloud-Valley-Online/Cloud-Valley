@@ -2,28 +2,6 @@
 
 @section('title', 'Gaiaonline')
 
-<style>
-    .card-img {
-
-        filter: brightness(50%);
-    }
-
-    .nav-tabs {
-    --bs-nav-tabs-border-width: px;
-    --bs-nav-tabs-border-color: #dee2e6;
-    --bs-nav-tabs-border-radius: 0.375rem;
-    --bs-nav-tabs-link-hover-border-color: #4e6c9a #4e6c9a #4e6c9a !important;
-    --bs-nav-tabs-link-active-color: #495057;
-    --bs-nav-tabs-link-active-bg: #f8fafc;
-    --bs-nav-tabs-link-active-border-color: #4e6c9a #4e6c9a #4e6c9a !important;
-    border-bottom: 5px solid #4e6c9a !important;
-}
-
-.forum-nav {
-    --bs-nav-link-color: none !important;
-}
-</style>
-
 @section('content')
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
         <div class="row">
@@ -135,7 +113,7 @@
                     <div style="border:1px solid #4d6c99;"></div>
                 </div>
                 <div class="main-content w-75 mx-auto p-3 my-3 border" style="background:white; border-color: #edf4fa;">
-                    @isset($forums)
+                    @if(!isset($forums))
                         @foreach ($forums as $forum)
                             <div class="row">
                                 <div class="col-1">
@@ -226,7 +204,9 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endisset
+                        @else
+                        <p>There are no forums, try creating some!</p>
+                    @endif
                 </div>
             </div>
         </div> 

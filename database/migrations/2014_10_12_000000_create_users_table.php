@@ -20,11 +20,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->ipAddress('ip_address');
-            $table->bigInteger('currency');
-            $table->bigInteger('currency_premium');
-            $table->integer('account_status');
+            $table->bigInteger('currency')->default(0);
+            $table->bigInteger('currency_premium')->default(0);
+            $table->integer('account_status')->default(1);
             $table->integer("can_trade")->default(1);
-            $table->string("avatar_path");
+            $table->string("avatar_path")->nullable();
             $table->integer('posts')->default(0);
             $table->integer('items_owned')->default(0);
             $table->integer('flare_equipped')->default(0);

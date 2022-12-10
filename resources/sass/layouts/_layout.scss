@@ -1,0 +1,42 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    background-image: url('	https://graphics.gaiaonline.com/images/global_bg/bg2.jpg');
+}
+
+.header {
+
+    background: url("https://graphics.gaiaonline.com/images/gaia_global/gaia_header/new_header/rs_header_bg_barton_tile_sprite.jpg?v=1") repeat-x top left;
+    background-position: 0 -150px;
+}
+
+.header-content {
+    background: url("https://graphics.gaiaonline.com/images/gaia_global/gaia_header/new_header/il_header_bg_barton_sprite.jpg?v=4") no-repeat bottom left;
+    background-position: 0 -150px;
+}
+
+.avatar {
+    position: relative;
+    bottom: 30px;
+    height: 150px;
+}
+
+.main-content-wrapper {
+    background: transparent url("https://www.toptal.com/designers/subtlepatterns/uploads/white_wall_hash.png") repeat;
+}
+
+
+.main-site-nav {
+    background-color: white !important;
+}
+
+.avi-area {
+    height:124px //This should be temporary.
+}
+
+.white {
+    color:$white;
+}
+
+footer:hover {
+    opacity: 1 !important;
+}
