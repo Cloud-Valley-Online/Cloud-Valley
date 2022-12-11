@@ -16,10 +16,6 @@
             font-family: arial;
 
         }
-
-        .dropdown-toggle::after {
-            content: none;
-        }
     </style>
     <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
         <div class="row">
@@ -51,7 +47,7 @@
             <div class="col-sm-10">
                 <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> This is the first thread!</h1>
             </div>
-            <div class="col-sm-2 thread-buttons">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 thread-buttons">
                 <div class="row align-items-start">
                     <div class="col">
                         <div class="btn-group">
@@ -65,15 +61,6 @@
         </div>
 
         <div class="row thread-tools-are pb-4" style="border-bottom:1px solid #c8c9cb; ">
-            <div class="col-sm-3 thread-buttons">
-                <div class="row align-items-start">
-                    <div class="col">
-                        <button type="button" class="btn btn-primary">Reply</button>
-                        <button type="button" class="btn btn-primary">Subscribe</button>
-                        <button type="button" class="btn btn-primary">Report</button>
-                    </div>
-                </div>
-            </div>
             <livewire:thread-quick-reply />
         </div>
         <div class="container">
@@ -110,7 +97,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="dropdown">
-                                                <button class="btn btn-sm btn-primary dropdown-toggle pe-4" type="button"
+                                                <button class="btn btn-sm btn-primary pe-4" type="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa-solid fa-face-smile" style="color:#feea00;"></i> Online
                                                 </button>
@@ -196,7 +183,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="dropdown">
-                                                <button class="btn btn-sm btn-primary dropdown-toggle pe-4" type="button"
+                                                <button class="btn btn-sm btn-primary post-actions pe-4" type="button"
                                                     data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="fa-solid fa-face-smile" style="color:#feea00;"></i> online
                                                 </button>

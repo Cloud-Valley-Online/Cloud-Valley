@@ -1,8 +1,23 @@
-<div>
+<div x-data="{ open: false }">
+    <div class="col-sm-3 thread-buttons">
+        <div class="row align-items-start">
+            <div class="col-12">
+               <!-- Example split danger button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">Reply</button>
+                    <button x-on:click="open = ! open" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                </div>
+                <button type="button" class="btn btn-primary">Subscribe</button>
+                <button type="button" class="btn btn-primary">Report</button>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="row post-username my-3 p-3">
             <div class="col-md-12">
-                <div class="row">
+                <div class="row" x-show="open" x-transition>
                     <div class="col-md-5 rounded p-4 shadow" style="max-height: 350px;">
                         <h5>Quick reply</h5>
 
