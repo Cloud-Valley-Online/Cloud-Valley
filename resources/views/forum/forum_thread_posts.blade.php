@@ -21,19 +21,26 @@
             content: none;
         }
     </style>
-    <div class="container posts-main-content-wrapper p-3" style="background: white;">
+    <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
         <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">[Site Name] Category</a></li>
+                  <li class="breadcrumb-item"><a href="#">General Chat </a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Town Square</li>
+                </ol>
+              </nav>
 
-            <div class="col-sm-10 breadcrumbs">
-                <a href="">[Site Name] Category ></a>
-                <a href="">General Chat >></a>
-                <a href="">Chatterbox</a>
-            </div>
-
-            <div class="col-sm-2">
+            <div class="col-sm-2 my-1">
                 <div class="pagination">
-                    <a href="">1</a><a href="">2</a><a href="">3</a>....... <a href="">45 </a><a
-                        href=""> 46</a>
+                    <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+                          <button type="button" class="btn btn-secondary">1</button>
+                          <button type="button" class="btn btn-secondary">2</button>
+                          <button type="button" class="btn btn-secondary">3</button>
+                          <button type="button" class="btn btn-secondary">4</button>
+                        </div>
+                      </div>
                 </div>
             </div>
             <hr>
@@ -42,7 +49,7 @@
 
         <div class="row title-area pb-2 mb-5">
             <div class="col-sm-10">
-                <h2> <i class="fa-regular fa-file" style="font-size: 20px;"></i> This is the first thread!</h2>
+                <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> This is the first thread!</h1>
             </div>
             <div class="col-sm-2 thread-buttons">
                 <div class="row align-items-start">
@@ -65,10 +72,9 @@
                         <button type="button" class="btn btn-primary">Subscribe</button>
                         <button type="button" class="btn btn-primary">Report</button>
                     </div>
-
                 </div>
             </div>
-
+            <livewire:thread-quick-reply />
         </div>
         <div class="container">
             <div class="row posts">
@@ -76,7 +82,7 @@
                     @foreach ($posts as $key => $post)
                         @if ($post->id % 2 == 1)
                             <div class="row post-area p-2">
-                                <div class="col-sm-2 post-avi-side" style="width:120px;">
+                                <div class="col-sm-2 post-avi-side" style="width:150px;">
                                     <div class="row post-username">
                                         <div class="col">
                                             <img src="//graphics.gaiaonline.com/images/usericons/b15c767d65e9.png"
@@ -151,7 +157,9 @@
 
                                     <div class="row post-bubble">
                                         <div class="col post mt-3 rounded" style="border:2px solid #818181; ">
+                                           <p style="font-weight:100 !important;">
                                             {{ $post->post_text }}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -162,10 +170,10 @@
                                                 alt="flare" style="position: relative; top:5px; left:5px;">
                                             <b
                                                 style="text-shadow: 0px 0px 6px #ff0000;
-                    position: relative;
-                    left: 5px;
-                    top: 8px;
-                    color: #333333;">Test
+                                                        position: relative;
+                                                        left: 5px;
+                                                        top: 8px;
+                                                        color: #333333;">Test
                                                 User</b>
                                         </div>
 
@@ -208,4 +216,5 @@
             </div>
         </div>
     </div>
+    @livewireScripts
 @endsection
