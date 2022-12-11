@@ -5,118 +5,33 @@
 @section('content')
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
         <div class="row">
-            <div class="col-12 d-sm-none d-md-block">
-                <!-- Nested Row to hide on mobile -->
-                <div class="row">
-                    <h5>Trending user forums</h5>
-
-                    <div class="col d-none d-md-block">
-                        <div class="card text-bg-dark overflow-auto">
-                            <img src="https://i0.wp.com/www.alittlebithuman.com/wp-content/uploads/2022/04/maxresdefault-1.jpg?resize=1170%2C700&ssl=1"
-                                class="card-img img-responsive" style="height: 200px;" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title bolder">Anime</h5>
-                                <p class="card-text bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Laudantium...</p>
-                                <p class="card-text bold"><img
-                                        src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot"> <small>Created by: Spring</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col d-none d-md-block">
-                        <div class="card text-bg-dark overflow-auto">
-                            <img src="https://media.wired.com/photos/62feb60bcea7c0581e825cb0/master/pass/Fate-of-Game-Preservation-Games-GettyImages-1170073827.jpg"
-                                class="card-img" style="height: 200px;" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title bolder">Video Games</h5>
-                                <p class="card-text bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Laudantium...</p>
-                                <p class="card-text bold"><img
-                                        src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot"> <small>Created by: Spring</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col d-none d-md-block">
-                        <div class="card text-bg-dark overflow-auto">
-                            <img src="https://s.yimg.com/os/creatr-uploaded-images/2022-02/13f2b700-97f8-11ec-9e9f-b1970c5a83c5"
-                                class="card-img" style="height: 200px;" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title bolder">Pokemon</h5>
-                                <p class="card-text bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Laudantium...</p>
-                                <p class="card-text bold"><img
-                                        src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot"> <small>Created by: Spring</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col d-none d-md-block">
-                        <div class="card text-bg-dark overflow-auto">
-                            <img src="https://u1cdn.gaiaonline.com/mfs/index/adminupload/c3b982e0aa22.png" class="card-img"
-                                style="height: 200px;" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title bolder">Gaia</h5>
-                                <p class="card-text bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Laudantium...</p>
-                                <p class="card-text bold"><img
-                                        src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot"> <small>Created by: Spring</small></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col d-none d-md-block">
-                        <div class="card text-bg-dark overflow-auto">
-                            <img src="https://www.rd.com/wp-content/uploads/2019/09/GettyImages-621924830-scaled.jpg"
-                                class="card-img" style="height: 200px;" alt="...">
-                            <div class="card-img-overlay">
-                                <h5 class="card-title bolder">Funny</h5>
-                                <p class="card-text bold">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                    Laudantium...</p>
-                                <p class="card-text bold"><img
-                                        src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                        alt="avatar headshot"> <small>Created by: Spring</small></p>
-                            </div>
-                        </div>
-                    </div>
-                    <small>Updated x minutes ago.</small>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="w-75 mx-auto">
+            <div class="col-sm-9">
+                <div class=" mx-auto">
                     <ul class="nav nav-tabs forum-nav mb-5">
                         <li class="nav-item">
                           <a class="nav-link active" style="background:#4d6c99; color:white;" href="#">Forum List</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Trending </a>
+                          <a class="nav-link text-gray" href="#">Trending </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">New Posts</a>
+                          <a class="nav-link text-gray" href="#">New Posts</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">New Threads</a>
+                          <a class="nav-link text-gray" href="#">New Threads</a>
                         </li>
                       </ul>
 
                     <a href="" class="text-decoration-none bolder" style="color:#4e6c9a;">
-                        <h3>General Forums</h3>
+                        <h3>{{ $forums[0]->category->name }}</h3>
                     </a>
                     <div style="border:1px solid #4d6c99;"></div>
                 </div>
-                <div class="main-content w-75 mx-auto p-3 my-3 border" style="background:white; border-color: #edf4fa;">
+                <div class="main-content mx-auto p-3 my-3 border" style="background:white; border-color: #edf4fa;">
                     @isset($forums)
                         @foreach ($forums as $forum)
                             @if($forum->id % 2 == 0)
-                                <div class="row" style="background-color:#edf4fa">
+                                <div class="row p-1" style="background-color:#edf4fa">
                                     <div class="col-1">
                                         <img src="https://graphics.gaiaonline.com/images/forum/ic/quick_23.gif" class="img-rounded"
                                              alt="Chatterbox">
@@ -177,6 +92,45 @@
                             @endif
                         @endforeach
                     @endisset
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+
+                              <h5 class="card-title"><i class="fa-solid fa-face-grin-stars"></i> Top poster of the month!</h5>
+                              <small class="card-text">Top posters get an exclusive crown item and a custom flair! <a href="">learn more</a></small>
+                              <hr>
+                              <ul class="list-group">
+                                <li class="list-group-item">
+                                    <i class="fa-solid fa-crown" style="color:#ffea3b;"></i>
+                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
+                                             alt="avatar headshot">
+                                    <a href="">Spring</a> with 101 posts!
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa-solid fa-crown" style="color:silver;"></i>
+                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
+                                    alt="avatar headshot">
+                           <a href="">Spring</a> with 100 posts!</li>
+                                <li class="list-group-item">
+                                    <i class="fa-solid fa-crown" style="color:brown;"></i>
+                                    <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
+                                    alt="avatar headshot">
+                           <a href="">Spring</a> with 100 posts!</li>
+                                <li class="list-group-item"><img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
+                                    alt="avatar headshot">
+                           <a href="">Spring</a> with 100 posts!</li>
+                                <li class="list-group-item"><img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
+                                    alt="avatar headshot">
+                           <a href="">Spring</a> with 100 posts!</li>
+                              </ul>
+                            </div>
+                          </div>
+                    </div>
                 </div>
             </div>
         </div>

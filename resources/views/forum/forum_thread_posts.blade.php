@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="row thread-tools-are pb-4" style="border-bottom:1px solid #c8c9cb; ">
+        <div class="row thread-tools-are" style="border-bottom:1px solid #c8c9cb; ">
             <livewire:thread-quick-reply />
         </div>
         <div class="container">

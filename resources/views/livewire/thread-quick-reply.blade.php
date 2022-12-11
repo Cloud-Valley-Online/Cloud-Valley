@@ -5,7 +5,8 @@
                <!-- Example split danger button -->
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary">Reply</button>
-                    <button x-on:click="open = ! open" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button x-on:click="open = ! open" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"
+                            style="border:1px solid #0a58ca;">
                     <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                 </div>

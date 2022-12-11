@@ -17,9 +17,10 @@
                     @if(Auth::check())
                         {{ __('You are logged in!') }}
                     @else
-                    {{ __('Consider logging in!') }}
+                    <div class="alert alert-warning">
+                        <p>You are currently viewing the site as a guest! Consider <a href="/login">logging in</a></p>
+                    </div>
                     @endif
-                    <br><br><br><br>
                 </div>
             </div>
         </div>

@@ -35,7 +35,16 @@
                         <button class="btn btn-primary">New Topic</button>
                     </div>
                     <div class="col-2">
-                        <a href="">1</a><a href="">2</a><a href="">3</a>
+                        <div class="pagination">
+                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group btn-group-sm" role="group" aria-label="First group">
+                                  <button type="button" class="btn btn-secondary">1</button>
+                                  <button type="button" class="btn btn-secondary">2</button>
+                                  <button type="button" class="btn btn-secondary">3</button>
+                                  <button type="button" class="btn btn-secondary">4</button>
+                                </div>
+                              </div>
+                        </div>
                     </div>
                 </div>
 

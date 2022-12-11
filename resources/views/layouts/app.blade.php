@@ -32,9 +32,9 @@
                 @if (Auth::check())
                     <div class="col-4 white">
                         <div class="row">
-                            <div class="col-sm-3">Coins</div>
-                            <div class="col-sm-3">Cash</div>
-                            <div class="col-sm-3">Account</div>
+                            <div class="col-sm-3 rounded" style="border:1px solid #8c8c8c3a; background:#3a3a3a;"><i class="fa-solid fa-coins"></i> 500</div>
+                            <div class="col-sm-3 rounded" style="border:1px solid #8c8c8c3a; background:#3a3a3a;"><i class="fa-solid fa-sack-dollar"></i></i> 500</div>
+                            <div class="col-sm-3 rounded"style="border:1px solid #8c8c8c3a; background:#3a3a3a;">Account</div>
                         </div>
                     </div>
                 @endif
@@ -46,13 +46,15 @@
                         <div class="col-sm-3">
                             <h1 class="white">[Site name] online</h1>
                         </div>
-                        <div class="col-sm-4 col-md-9">
-                            <!-- Avatar -->
-                            <img class="avatar img-fluid d-none d-md-block"
-                                src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/c1/01/7fc8ff4b27701c1_flip.png?t=1670122533_6.00_11"
-                                alt="avatar">
-                            <!-- Avatar -->
-                        </div>
+                        @if (Auth::check())
+                            <div class="col-sm-4 col-md-9">
+                                <!-- Avatar -->
+                                <img class="avatar img-fluid d-none d-md-block"
+                                    src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/c1/01/7fc8ff4b27701c1_flip.png?t=1670122533_6.00_11"
+                                    alt="avatar">
+                                <!-- Avatar -->
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-sm-6"></div>
@@ -68,13 +70,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     My-[Site]
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="dropdown-item"  href={{ url("/home") }}>Home</a>
+                                        <a class="dropdown-item" href={{ url('/home') }}>Home</a>
                                     </li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li>
@@ -84,11 +86,11 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href={{ url("/currency") }}>[Currency]</a>
+                                <a class="nav-link" href={{ url('/currency') }}>[Currency]</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     Shops
                                 </a>
                                 <ul class="dropdown-menu">
@@ -101,12 +103,12 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     Forums
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item"  href={{ url("/forum") }}>Forum</a></li>
+                                    <li><a class="dropdown-item" href={{ url('/forum') }}>Forum</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
@@ -120,8 +122,12 @@
                             </li>
                         </ul>
                         <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                <button class="btn btn-sm btn-outline-primary" type="submit">Search</button>
+                              </div>
+
                         </form>
                     </div>
                 </div>
