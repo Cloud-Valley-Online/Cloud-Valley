@@ -61,14 +61,15 @@
         </div>
 
         <div class="row thread-tools-are" style="border-bottom:1px solid #c8c9cb; ">
-            <livewire:thread-quick-reply />
+            @livewire('thread-quick-reply', ['thread' => $posts[0]->thread])
         </div>
         <div class="container">
             <div class="row posts">
                 @isset($posts)
                     @foreach ($posts as $key => $post)
                         @if ($post->id % 2 == 1)
-                            <div class="row post-area p-2">
+                        <!-- Post area -->
+                            <div class="row post-area p-2 mb-2">
                                 <div class="col-sm-2 post-avi-side" style="width:150px;">
                                     <div class="row post-username">
                                         <div class="col">
@@ -122,7 +123,7 @@
                                     <div class="row post-bubble">
                                         <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
                                             <p style="font-weight:100;">
-                                                {{ $post->post_text }}
+                                                {!! $post->post_text !!}
                                             </p>
                                         </div>
                                     </div>
@@ -131,7 +132,7 @@
                             <hr>
                         @else
                             <!-- Alt post reversed -->
-                            <div class="row post-area p-2">
+                            <div class="row post-area p-2 mb-2">
                                 <div class="col-sm-10">
 
                                     <div class="row post-buttons mt-2">
@@ -145,7 +146,7 @@
                                     <div class="row post-bubble">
                                         <div class="col post mt-3 rounded" style="border:2px solid #818181; ">
                                            <p style="font-weight:100 !important;">
-                                            {{ $post->post_text }}
+                                            {!! $post->post_text  !!}
                                             </p>
                                         </div>
                                     </div>
@@ -197,6 +198,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                         @endif
                     @endforeach
                 @endisset

@@ -1,4 +1,16 @@
 <div x-data="{ open: false }">
+ <!-- Post successful  -->
+ @if (session()->has('message'))
+ <div class="alert alert-success">
+     {{ session('message') }}
+ </div>
+@endif
+
+<!-- LW Validation -->
+@error('post') <div class="alert alert-danger">{{ $message }}</div> @enderror
+
+<!-- Load TinyMCE config -->
+    <x-head.tinymce-config/>
     <div class="col-sm-3 thread-buttons">
         <div class="row align-items-start">
             <div class="col-12">
@@ -19,21 +31,15 @@
         <div class="row post-username my-3 p-3">
             <div class="col-md-12">
                 <div class="row" x-show="open" x-transition>
-                    <div class="col-md-5 rounded p-4 shadow" style="max-height: 350px;">
-                        <h5>Quick reply</h5>
-
-                            <div class="form-group">
-                                <textarea class="form-control" wire:model="post" name="post" cols="100" rows="10">
-
-                                </textarea>
-                            </div>
-                            <div class="btngroup mt-1">
-                                <button class="btn btn-sm btn-primary">Submit</button>
-                                <button class="btn btn-sm btn-primary" id="preview">Preview</button>
-                            </div>
+                    <!--TinyMCE quick-reply-->
+                    <div wire:ignore class="col-md-4 rounded p-4 shadow">
+                        <h3>Quick reply</h3>
+                            <textarea wire:model="post" id="myeditorinstance" name="post"></textarea>
+                            <button wire:click="save" class="btn btn-primary mt-1">Submit</button>
                     </div>
 
-                    <div class="col-md-7">
+                    <!-- Preview area -->
+                    <div class="col-md-8">
                         <div class="row post-area p-2">
                             <div class="col-sm-1 post-avi-side" style="width:150px;">
                                 <div class="row post-username">
@@ -83,7 +89,7 @@
                                 <div class="row post-bubble">
                                     <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
                                         <p style="font-weight:100;" class="post-body">
-                                           {{ nl2br($post) }}
+                                           {!!  $post !!}
                                         </p>
                                     </div>
                                 </div>

@@ -10,11 +10,17 @@ class Post extends Model
     use HasFactory;
 
     /**
+     * Allow mass assignment.
+     */
+    protected $guarded = [];
+
+    /**
      * Get the Thread that owns the post.
      */
     public function thread()
     {
         return $this->belongsTo(Thread::class);
     }
-    
+
+
 }
