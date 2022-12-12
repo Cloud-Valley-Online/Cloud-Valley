@@ -51,9 +51,9 @@
                 <div class="row align-items-start">
                     <div class="col">
                         <div class="btn-group">
-                            <a href="#" class="btn btn-primary">Lock</a>
-                            <a href="#" class="btn btn-primary">Sticky</a>
-                            <a href="#" class="btn btn-primary">Move</a>
+                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-lock"></i> Lock</a>
+                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-note-sticky"></i> Sticky</a>
+                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-reply-all"></i> Move</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,11 @@
         </div>
 
         <div class="row thread-tools-are" style="border-bottom:1px solid #c8c9cb; ">
-            @livewire('thread-quick-reply', ['thread' => $posts[0]->thread])
+            <!-- LW Component-->
+            @if (Auth::check())
+                @livewire('thread-quick-reply', ['thread' => $posts[0]->thread])
+            @endif
+
         </div>
         <div class="container">
             <div class="row posts">
@@ -80,7 +84,7 @@
                                         position: relative;
                                         right: 5px;
                                         bottom: 1px;
-                                        color: #333333;">Spring</b>
+                                        color: #333333;">{{ userIdToUsername($post->post_author)  }}</b>
                                         </div>
                                     </div>
                                     <div class="row" style="position:relative; bottom:10px; left:15px;">
@@ -156,13 +160,11 @@
                                         <div class="col">
                                             <img src="//graphics.gaiaonline.com/images/usericons/b15c767d65e9.png"
                                                 alt="flare" style="position: relative; top:5px; left:5px;">
-                                            <b
-                                                style="text-shadow: 0px 0px 6px #ff0000;
+                                            <b style="text-shadow: 0px 0px 6px #ff0000;
                                                         position: relative;
                                                         left: 5px;
                                                         top: 8px;
-                                                        color: #333333;">Test
-                                                User</b>
+                                                        color: #333333;">{{ userIdToUsername($post->post_author)  }}</b>
                                         </div>
 
                                     </div>

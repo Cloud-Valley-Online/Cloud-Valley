@@ -22,7 +22,7 @@
                     <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                 </div>
-                <button type="button" class="btn btn-primary">Subscribe</button>
+                <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Subscribe</button>
                 <button type="button" class="btn btn-primary">Report</button>
             </div>
         </div>

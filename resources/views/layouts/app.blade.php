@@ -27,24 +27,34 @@
     <div class="container-fluid header mb-3">
         <!-- Header -->
         <div class="header-content row">
-            <div class="row header-currency">
-                <div class="col-8"></div>
+            <div class="row header-currency justify-content-end">
                 @if (Auth::check())
-                    <div class="col-4 white">
-                        <div class="row">
-                            <div class="col-sm-3 rounded" style="border:1px solid #8c8c8c3a; background:#3a3a3a;"><i class="fa-solid fa-coins"></i> 500</div>
-                            <div class="col-sm-3 rounded" style="border:1px solid #8c8c8c3a; background:#3a3a3a;"><i class="fa-solid fa-sack-dollar"></i></i> 500</div>
-                            <div class="col-sm-3 rounded"style="border:1px solid #8c8c8c3a; background:#3a3a3a;">Account</div>
+                    <div class="col-4 white align-self-end">
+                        <div class="row"">
+                            <div class="col-sm-3 rounded mx-1 " style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-coins"></i> 500</div>
+                            <div class="col-sm-3 rounded mx-1" style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-sack-dollar"></i></i> 500</div>
+
+                            <div class="col-sm-3 rounded"style="border:1px solid #8c8c8c3a; background:#3a3a3a;">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Hi, {{ userIdToUsername(Auth::id()) }}
+                                      </a>
+                                      <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" href={{ url('/logout') }}>Logout</a></li>
+                                        <li><a class="dropdown-item" href="#">settings</a></li>
+                                 </ul>
+                            </div>
                         </div>
                     </div>
                 @endif
             </div>
 
             <div class="row header-main-content">
-                <div class="col-sm-6">
+                <div class="col-sm-6" >
                     <div class="row avi-area">
                         <div class="col-sm-3">
-                            <h1 class="white">[Site name] online</h1>
+                            <h1 class="white">Cloud Valley</h1>
                         </div>
                         @if (Auth::check())
                             <div class="col-sm-4 col-md-9">
@@ -72,7 +82,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    My-[Site]
+                                    MyStuff
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
