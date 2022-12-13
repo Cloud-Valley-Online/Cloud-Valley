@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Forum;
 
 use App\Models\Thread;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -47,8 +48,10 @@ class ThreadController extends Controller
      */
     public function show($forum_name, $thread_subject, $thread_id)
     {
+        //$posts = Post::factory()->count(30)->create();
+
         return view('forum.forum_thread_posts', [
-            'posts' => Thread::findOrFail($thread_id)->posts
+            'posts' => Thread::findOrFail($thread_id)->posts()->paginate(15)
         ]);
     }
 

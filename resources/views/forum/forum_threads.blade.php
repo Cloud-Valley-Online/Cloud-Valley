@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Gaiaonline')
+@section('title', 'Cloud Valley Town Square')
 
 @section('content')
+
+    @inject('carbon', 'Carbon\Carbon')
 
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
         <div class="row">
@@ -25,25 +27,20 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="alert alert-success">
-                            ToDO
+                            Subforum todo
                         </div>
                     </div>
                 </div>
 
-                <div class="row mt-4">
-                    <div class="col-10">
+                <div class="row justify-content-center">
+                    <div class="col-2">
                         <button class="btn btn-primary">New Topic</button>
                     </div>
-                    <div class="col-2">
+                    <div class="col-5 offset-5">
                         <div class="pagination">
-                            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-                                <div class="btn-group btn-group-sm" role="group" aria-label="First group">
-                                  <button type="button" class="btn btn-secondary">1</button>
-                                  <button type="button" class="btn btn-secondary">2</button>
-                                  <button type="button" class="btn btn-secondary">3</button>
-                                  <button type="button" class="btn btn-secondary">4</button>
-                                </div>
-                              </div>
+                            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                {{ $threads->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,8 +53,8 @@
                             <tr>
                                 <th scope="col">Topic</th>
                                 <th scope="col">Replies</th>
-                                <th scope="col">Author</th>
-                                <th scope="col">Last Post</th>
+                                <th scope="col">Created on</th>
+                                <th scope="col">Last post</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,11 +62,17 @@
                                 @foreach ($threads as $thread)
                                     <tr>
                                         <th scope="row">
-                                            <a href="/forum/{{ $thread->forum->forum_name_clean }}/{{ $thread->thread_subject_clean }}/{{ $thread->id }}">{{ $thread->thread_subject }}</a>
+                                            <a href=""><img
+                                                    src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
+                                                    alt="avatar headshot"></a>
+                                            <a class="text-decoration-none"
+                                                href="/forum/{{ $thread->forum->forum_name_clean }}/{{ $thread->thread_subject_clean }}/{{ $thread->id }}">
+                                                {{ $thread->thread_subject }}
+                                            </a>
                                         </th>
                                         <td>{{ $thread->reply_count }}</td>
-                                        <td><a href="Spring">{{ $thread->last_poster_name }}</a></td>
-                                        <td>{{ $thread->last_reply_date }}</td>
+                                        <td>{{ $thread->created_at->diffForHumans() }}</td>
+                                        <td><a href="">Spring</a> 1 week ago</td>
                                     </tr>
                                 @endforeach
                             @endisset

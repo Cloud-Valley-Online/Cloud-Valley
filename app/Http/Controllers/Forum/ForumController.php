@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Forum;
 
 use App\Http\Controllers\Controller;
 use App\Models\Forum;
+use App\Models\Thread;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -49,8 +50,10 @@ class ForumController extends Controller
      */
     public function show($forum_name, $forum_id)
     {
+        //$threads = Thread::factory()->count(30)->create();
+
         return view('forum.forum_threads', [
-            'threads' => Forum::findOrFail($forum_id)->threads
+            'threads' => Forum::findOrFail($forum_id)->threads()->paginate(25)
         ]);
     }
 

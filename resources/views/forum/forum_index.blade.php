@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gaiaonline')
+@section('title', 'Cloud Valley Forums')
 
 @section('content')
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
@@ -37,7 +37,7 @@
                                              alt="Chatterbox">
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}"
+                                        <a href="/forum/{{ $forum->forum_name_clean }}/{{ $forum->id }}"
                                            class="text-decoration-none">
                                             <h5 style="color:#4e6c9a;">
                                                 {{ $forum->forum_name }}
@@ -67,7 +67,7 @@
                                              alt="Chatterbox">
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <a href="/forum/{{ $forum->forum_name }}/{{ $forum->id }}" class="text-decoration-none">
+                                        <a href="/forum/{{ $forum->forum_name_clean }}/{{ $forum->id }}" class="text-decoration-none">
                                             <h5 style="color:#4e6c9a;">
                                                 {{ $forum->forum_name }}
                                             </h5>

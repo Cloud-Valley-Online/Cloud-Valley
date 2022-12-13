@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Database\Factories\Forum\ThreadFactory;
 
 class Thread extends Model
 {
@@ -23,5 +24,15 @@ class Thread extends Model
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+     /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return ThreadFactory::new();
     }
 }

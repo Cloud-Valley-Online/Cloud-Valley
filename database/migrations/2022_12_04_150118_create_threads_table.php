@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer("thread_moved")->default(0);
             $table->string("thread_author");
             $table->string("thread_subject");
-            $table->string("thread_subject_clean");
+            $table->text("thread_subject_clean");
             $table->string("tags")->nullable();
             $table->integer("thread_has_poll")->default(0);
             $table->timestamp("last_reply_date");

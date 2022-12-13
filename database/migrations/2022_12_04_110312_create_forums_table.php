@@ -26,6 +26,8 @@ return new class extends Migration
             $table->integer("forum_thread_count")->default(0);
             $table->integer("forum_can_earn_currency")->default(1);
             $table->integer("forum_currency_bonus_ammount")->default(1);
+            $table->integer('forum_status')->default(1);
+            $table->integer('forum_type')->default(1);
             $table->text("forum_rules")->nullable();
             $table->string("forum_rules_link")->nullable();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

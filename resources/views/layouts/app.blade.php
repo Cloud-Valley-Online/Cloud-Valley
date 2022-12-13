@@ -32,7 +32,7 @@
                     <div class="col-4 white align-self-end">
                         <div class="row"">
                             <div class="col-sm-3 rounded mx-1 " style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-coins"></i> 500</div>
-                            <div class="col-sm-3 rounded mx-1" style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-sack-dollar"></i></i> 500</div>
+                            <div class="col-sm-3 rounded mx-1" style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-cloud"></i></i> 500</div>
 
                             <div class="col-sm-3 rounded"style="border:1px solid #8c8c8c3a; background:#3a3a3a;">
                                 <ul class="navbar-nav">
@@ -96,7 +96,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href={{ url('/currency') }}>[Currency]</a>
+                                <a class="nav-link" href={{ url('/currency') }}><i class="fa-solid fa-cloud"></i> Clouds</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
@@ -257,7 +257,7 @@
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2023 Copyright:
-            [Site name]
+            Cloud Valley
         </div>
         <!-- Copyright -->
     </footer>
