@@ -19,15 +19,18 @@
     </style>
     <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
         <div class="row">
+            @if ($posts[0])
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/forum">Cloud Valley Forums</a></li>
-                    <li class="breadcrumb-item"><a href="#">General Forums </a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Town Square</li>
+                    <li class="breadcrumb-item">
+                        <a href="/forum/{{ $posts[0]->thread->forum->forum_name_clean}}/{{ $posts[0]->thread->forum_id }}">General Forums </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $posts[0]->thread->forum->forum_name }}</li>
                 </ol>
             </nav>
             <!-- Begin Post logic -->
-            @if ($posts[0])
+
                 <div class="col-sm-12 pagination">
                     {{ $posts->links() }}
                 </div>
@@ -36,8 +39,7 @@
 
         <div class="row title-area pb-2 mb-5">
             <div class="col-sm-10">
-                <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> This is the first thread!</h1>
-            </div>
+                <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> {{ $posts[0]->thread->thread_subject }} </h1></div>
             @if (Auth::check())
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 thread-buttons">
                     <div class="row align-items-start">
@@ -57,7 +59,7 @@
         <div class="row thread-tools-are" style="border-bottom:1px solid #c8c9cb; ">
             <!-- LW Component-->
             @if (Auth::check())
-                @livewire('thread-quick-reply', ['thread' => $posts[0]->thread])
+                @livewire('thread-quick-reply', ['thread' => $posts[0]->thread, 'last_page' => $posts->lastpage()])
             @endif
 
         </div>
@@ -67,7 +69,7 @@
                     @foreach ($posts as $key => $post)
                         @if ($post->id % 2 == 1)
                             <!-- Post area -->
-                            <div class="row post-area p-2 mb-2">
+                            <div class="row post-area p-2 mb-2" id="post.{{ $post->id }}">
                                 <div class="col-sm-2 post-avi-side" style="width:150px;">
                                     <div class="row post-username">
                                         <div class="col">
@@ -130,7 +132,7 @@
                             <hr>
                         @else
                             <!-- Alt post reversed -->
-                            <div class="row post-area p-2 mb-2">
+                            <div class="row post-area p-2 mb-2" id="post.{{ $post->id }}">
                                 <div class="col-sm-10">
 
                                     <div class="row post-buttons mt-2">

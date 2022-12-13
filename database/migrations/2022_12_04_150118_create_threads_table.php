@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer("thread_announced")->default(0);
             $table->integer("thread_moved")->default(0);
             $table->string("thread_author");
-            $table->string("thread_subject");
+            $table->char("thread_subject", 80);
             $table->text("thread_subject_clean");
             $table->string("tags")->nullable();
             $table->integer("thread_has_poll")->default(0);

@@ -21,7 +21,7 @@ class PostFactory extends Factory
     {
         return [
             'forum_id' => 1,
-            'thread_id' => 2,
+            'thread_id' => 1,
             'post_text' => fake()->paragraph(),
             'post_author' => '1',
             'post_author_ip_address' => '127.0.0.1',

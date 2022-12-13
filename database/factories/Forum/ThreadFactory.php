@@ -22,8 +22,8 @@ class ThreadFactory extends Factory
         return [
             'forum_id' => 1,
             'thread_author' => 1,
-            'thread_subject' => fake()->text(10),
-            'thread_subject_clean' => fake()->text(10),
+            'thread_subject' => fake()->text(80),
+            'thread_subject_clean' => fake()->text(80),
             'last_reply_date' => '2022-12-01 00:00:00',
             'last_poster_name' => 1,
             'reply_count'   =>  1,

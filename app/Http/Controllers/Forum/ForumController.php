@@ -50,7 +50,7 @@ class ForumController extends Controller
      */
     public function show($forum_name, $forum_id)
     {
-        //$threads = Thread::factory()->count(30)->create();
+        //$threads = Thread::factory()->count(100)->create();
 
         return view('forum.forum_threads', [
             'threads' => Forum::findOrFail($forum_id)->threads()->paginate(25)

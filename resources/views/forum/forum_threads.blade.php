@@ -36,7 +36,7 @@
                     <div class="col-2">
                         <button class="btn btn-primary">New Topic</button>
                     </div>
-                    <div class="col-5 offset-5">
+                    <div class="col-5 offset-5" >
                         <div class="pagination">
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                 {{ $threads->links() }}
@@ -67,7 +67,7 @@
                                                     alt="avatar headshot"></a>
                                             <a class="text-decoration-none"
                                                 href="/forum/{{ $thread->forum->forum_name_clean }}/{{ $thread->thread_subject_clean }}/{{ $thread->id }}">
-                                                {{ $thread->thread_subject }}
+                                                <span>{{ $thread->thread_subject }}</span>
                                             </a>
                                         </th>
                                         <td>{{ $thread->reply_count }}</td>

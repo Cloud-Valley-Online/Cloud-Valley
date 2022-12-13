@@ -1,4 +1,8 @@
 <div x-data="{ open: false }">
+    <!-- Actual known issue -->
+<script>
+    window.onhashchange = () => window.location.reload()
+</script>
  <!-- Post successful  -->
  @if (session()->has('message'))
  <div class="alert alert-success">
@@ -32,14 +36,14 @@
             <div class="col-md-12">
                 <div class="row" x-show="open" x-transition>
                     <!--TinyMCE quick-reply-->
-                    <div wire:ignore class="col-md-4 rounded p-4 shadow">
+                    <div wire:ignore class="col-md-4 p-4">
                         <h3>Quick reply</h3>
                             <textarea wire:model="post" id="myeditorinstance" name="post"></textarea>
                             <button wire:click="save" class="btn btn-primary mt-1">Submit</button>
                     </div>
 
                     <!-- Preview area -->
-                    <div class="col-md-8">
+                    <div class="col-md-8 shadow rounded">
                         <div class="row post-area p-2">
                             <div class="col-sm-1 post-avi-side" style="width:150px;">
                                 <div class="row post-username">
@@ -69,7 +73,6 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="dropdown">
-
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" href="#">Action</a></li>
                                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -79,7 +82,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-sm-9">
                                 <div class="row post-buttons mt-2">
                                     <div class="col">
                                        <small class="fst-italic">This is a live preview</small>
@@ -87,7 +90,7 @@
                                 </div>
 
                                 <div class="row post-bubble">
-                                    <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
+                                    <div class="col-12 post mt-2 rounded" style="border:2px solid #818181; ">
                                         <p style="font-weight:100;" class="post-body">
                                            {!!  $post !!}
                                         </p>
@@ -99,10 +102,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 </div>

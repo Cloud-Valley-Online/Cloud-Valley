@@ -48,10 +48,17 @@ class ThreadController extends Controller
      */
     public function show($forum_name, $thread_subject, $thread_id)
     {
-        //$posts = Post::factory()->count(30)->create();
+        //$posts = Post::factory()->count(100)->create();
+
+        /**
+        * Putting the timestamp in the URL is required because LW can't tell the page was submitted on reload.
+        * See: https://github.com/livewire/livewire/issues/289
+        */
+        $time = time();
+        $rand = (string) $time;
 
         return view('forum.forum_thread_posts', [
-            'posts' => Thread::findOrFail($thread_id)->posts()->paginate(15)
+            'posts' => Thread::findOrFail($thread_id)->posts()->paginate(15)->appends(['t' => $rand])
         ]);
     }
 
