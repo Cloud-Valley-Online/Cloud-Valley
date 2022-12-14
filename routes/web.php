@@ -24,7 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/forum', [App\Http\Controllers\Forum\ForumController::class, 'index'])->name('forum');
 Route::get('/forum/{forum_name}/{forum_id}', [App\Http\Controllers\Forum\ForumController::class, 'show']);
 Route::get('/forum/{forum_name}/{thread_subject}/{thread_id}', [App\Http\Controllers\Forum\ThreadController::class, 'show']);
-Route::get('/forum/compose/topic/new/{forum_id}', [App\Http\Controllers\Forum\ThreadController::class, 'create']);
+Route::get('/forum/compose/topic/new/{forum_id}', [App\Http\Controllers\Forum\ThreadController::class, 'create'])->middleware('auth');
 
 
 

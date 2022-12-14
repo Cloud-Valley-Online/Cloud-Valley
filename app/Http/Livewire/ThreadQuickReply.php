@@ -14,11 +14,12 @@ class ThreadQuickReply extends Component
     use AuthorizesRequests;
 
     public $post;
+    public $post_length;
     public $last_page = 0;
     public $thread; //Pass to Policy for authorization on post.
 
     protected $rules = [
-        'post' => 'required',
+        'post' => 'required|max:5000',
     ];
 
     /**
@@ -28,6 +29,7 @@ class ThreadQuickReply extends Component
     {
         $this->thread = $thread;
         $this->last_page = $last_page;
+        $this->post_length = strlen($this->post);
     }
 
     public function render()

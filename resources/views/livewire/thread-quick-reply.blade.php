@@ -1,4 +1,4 @@
-<div x-data="{ open: false }">
+<div x-data>
     <!-- Actual known issue -->
 <script>
     window.onhashchange = () => window.location.reload()
@@ -57,10 +57,12 @@
             <div class="col-md-12">
                 <div class="row" x-show="open" x-transition>
                     <!--TinyMCE quick-reply-->
+
                     <div wire:ignore class="col-md-4 p-4">
                         <h3>Quick reply</h3>
-                            <textarea wire:model="post" id="myeditorinstance" name="post"></textarea>
+                            <textarea wire:model="post" id="myeditorinstance"></textarea>
                             <button wire:click="save" class="btn btn-primary mt-1">Submit</button>
+                            <small x-text="5000-$wire.post.length"></small><small> characters remaining.</small>
                     </div>
 
                     <!-- Preview area -->
@@ -113,7 +115,7 @@
                                 <div class="row post-bubble">
                                     <div class="col-12 post mt-2 rounded" style="border:2px solid #818181; ">
                                         <p style="font-weight:100;" class="post-body">
-                                           {!!  $post !!}
+                                           {!!  Purifier::clean($post) !!}
                                         </p>
                                     </div>
                                 </div>
