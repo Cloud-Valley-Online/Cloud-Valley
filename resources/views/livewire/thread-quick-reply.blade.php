@@ -3,18 +3,39 @@
 <script>
     window.onhashchange = () => window.location.reload()
 </script>
+
+<!-- TinyMCE config -->
+<script src="https://cdn.tiny.cloud/1/u0ln3mk7x13fep4g9ba2prf692se2cpwd2gmf0gt8glalthc/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+  tinymce.init({
+    selector: 'textarea#myeditorinstance',
+    plugins: 'lists emoticons autolink link image',
+    toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | link image media emoticons | bullist numlist  ',
+    menubar: '',
+    setup: function (editor) {
+               editor.on('init change', function () {
+                   editor.save();
+               });
+               editor.on('change', function (e) {
+                   @this.set('post', editor.getContent());
+               });
+           }
+  });
+</script>
+
+
  <!-- Post successful  -->
  @if (session()->has('message'))
- <div class="alert alert-success">
-     {{ session('message') }}
- </div>
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
 @endif
 
 <!-- LW Validation -->
 @error('post') <div class="alert alert-danger">{{ $message }}</div> @enderror
 
-<!-- Load TinyMCE config -->
-    <x-head.tinymce-config/>
+    <!-- Post area -->
     <div class="col-sm-3 thread-buttons">
         <div class="row align-items-start">
             <div class="col-12">
@@ -98,7 +119,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

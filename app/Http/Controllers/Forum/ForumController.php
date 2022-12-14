@@ -50,11 +50,24 @@ class ForumController extends Controller
      */
     public function show($forum_name, $forum_id)
     {
-        //$threads = Thread::factory()->count(100)->create();
+       //$threads = Thread::factory()->count(100)->create(); //Generate 100 fake threads.
 
+       $forum = Forum::findOrFail($forum_id);
+
+       //Verify route is using correct params.
+       if($forum->forum_name_clean == $forum_name)
+       {
         return view('forum.forum_threads', [
-            'threads' => Forum::findOrFail($forum_id)->threads()->paginate(25)
+            'threads' => $forum->threads()->paginate(25)
         ]);
+       }
+
+       else
+       {
+            abort(404);
+       }
+
+
     }
 
     /**

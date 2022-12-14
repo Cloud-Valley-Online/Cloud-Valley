@@ -34,7 +34,7 @@
 
                 <div class="row justify-content-center">
                     <div class="col-2">
-                        <button class="btn btn-primary">New Topic</button>
+                       <a href="/forum/compose/topic/new/{{ $threads[0]->id }}"><button class="btn btn-primary">New Topic</button></a>
                     </div>
                     <div class="col-5 offset-5" >
                         <div class="pagination">

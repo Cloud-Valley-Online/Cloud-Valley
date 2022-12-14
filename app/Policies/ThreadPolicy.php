@@ -99,15 +99,19 @@ class ThreadPolicy
      */
     public function canPost(User $user, Thread $thread)
     {
-         if($user->account_status === 1 && $thread->thread_locked === 0)
+         if($user->account_status === config('users.USER_IS_NOT_BANNED') &&
+            $thread->thread_locked === config('forum.THREAD_IS_NOT_LOCKED'))
          {
             return Response::allow('Post successful');
          }
-         else if($thread->thread_locked === 1 && $user->account_status === 1)
+
+         else if($thread->thread_locked === config('forum.THREAD_IS_LOCKED') &&
+                 $user->account_status === config('users.USER_IS_NOT_BANNED'))
          {
             return Response::deny('Thread is locked');
          }
-         else if($user->account_status === 0)
+
+         else if($user->account_status === config('users.USER_IS_BANNED'))
          {
             return redirect('/logout');
          }

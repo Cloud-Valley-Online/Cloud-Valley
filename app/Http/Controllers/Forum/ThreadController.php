@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Forum;
 
+use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -24,9 +25,9 @@ class ThreadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($forum_id)
     {
-        //
+        return view('forum.compose');
     }
 
     /**
@@ -45,21 +46,31 @@ class ThreadController extends Controller
      *
      * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
+     *
+     * Putting the timestamp in the URL is required because LW can't tell the page was submitted on reload.
+     * See: https://github.com/livewire/livewire/issues/289
      */
     public function show($forum_name, $thread_subject, $thread_id)
     {
-        //$posts = Post::factory()->count(100)->create();
+        //$posts = Post::factory()->count(100)->create(); // Generate 100 fake posts
 
-        /**
-        * Putting the timestamp in the URL is required because LW can't tell the page was submitted on reload.
-        * See: https://github.com/livewire/livewire/issues/289
-        */
-        $time = time();
-        $rand = (string) $time;
+        $thread = Thread::findOrFail($thread_id);
 
-        return view('forum.forum_thread_posts', [
-            'posts' => Thread::findOrFail($thread_id)->posts()->paginate(15)->appends(['t' => $rand])
-        ]);
+        //Verify route is using correct params.
+        if($thread->thread_subject_clean == $thread_subject &&
+           $thread->forum->forum_name_clean == $forum_name)
+        {
+            return view('forum.forum_thread_posts', [
+                'posts' => $thread->posts()->paginate(15)->appends(['t' => time()])
+            ]);
+        }
+
+        else
+        {
+            abort(404);
+        }
+
+
     }
 
     /**
