@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -35,10 +36,10 @@ class ThreadPolicy
     }
 
     /**
-     * Determine whether the user can create models.
+     * Determine whether the user can create a thread on the specified forum.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
+     * @return \Illuminate\Auth\Access\Response Response|bool
      */
     public function create(User $user)
     {
@@ -96,6 +97,11 @@ class ThreadPolicy
     /**
      *  Verify that the user is logged in, the thread
      *  is not locked and the user is not banned.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Thread  $thread
+     *
+     * @return \Illuminate\Auth\Access\Response
      */
     public function canPost(User $user, Thread $thread)
     {

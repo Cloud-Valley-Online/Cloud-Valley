@@ -4,8 +4,6 @@
 
 @section('content')
 
-    @inject('carbon', 'Carbon\Carbon')
-
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
         <div class="row">
             <div class="col-sm-12">
@@ -24,28 +22,29 @@
 
                 <!-- Sub Forums -->
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="alert alert-success">
-                            Subforum todo
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success">
+                                Subforum todo
+                            </div>
                         </div>
                     </div>
-                </div>
 
                 <div class="row justify-content-center">
                     <div class="col-2">
-                       <a href="/forum/compose/topic/new/{{ $threads[0]->id }}"><button class="btn btn-primary">New Topic</button></a>
+                       <a href="/forum/compose/thread/new/{{ last(request()->segments()) }}">
+                            <button class="btn btn-primary">New Topic</button>
+                       </a>
                     </div>
                     <div class="col-5 offset-5" >
                         <div class="pagination">
                             <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                {{ $threads->links() }}
+                               {{ $threads->links() }}
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <!-- Thread -->
                 <div class="row p-2">
                     <table class="table table-striped border border-1 border-dark rounded">
@@ -62,17 +61,30 @@
                                 @foreach ($threads as $thread)
                                     <tr>
                                         <th scope="row">
-                                            <a href=""><img
+                                            <a href="" class="text-decoration-none">
+                                                <img class="pe-1"
                                                     src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
-                                                    alt="avatar headshot"></a>
+                                                    alt="avatar headshot">
+                                            </a>
+
+                                            @if ($thread->thread_announced)
+                                                <span><i class="fa-sharp fa-solid fa-bullhorn"></i> Announcement:</span>
+                                            @elseif($thread->thread_stuck)
+                                                <span><i class="fa-solid fa-note-sticky"></i> Sticky:</span>
+                                            @endif
+
+
+
+
                                             <a class="text-decoration-none"
                                                 href="/forum/{{ $thread->forum->forum_name_clean }}/{{ $thread->thread_subject_clean }}/{{ $thread->id }}">
                                                 <span>{{ $thread->thread_subject }}</span>
                                             </a>
+
                                         </th>
                                         <td>{{ $thread->reply_count }}</td>
                                         <td>{{ $thread->created_at->diffForHumans() }}</td>
-                                        <td><a href="">Spring</a> 1 week ago</td>
+                                        <td><a href="">Spring</a> {{ Carbon\Carbon::parse($thread->last_reply_date)->diffForHumans() }}</td>
                                     </tr>
                                 @endforeach
                             @endisset

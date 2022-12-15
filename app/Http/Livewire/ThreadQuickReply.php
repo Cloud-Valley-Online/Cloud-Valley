@@ -14,7 +14,6 @@ class ThreadQuickReply extends Component
     use AuthorizesRequests;
 
     public $post;
-    public $post_length;
     public $last_page = 0;
     public $thread; //Pass to Policy for authorization on post.
 
@@ -29,7 +28,6 @@ class ThreadQuickReply extends Component
     {
         $this->thread = $thread;
         $this->last_page = $last_page;
-        $this->post_length = strlen($this->post);
     }
 
     public function render()
@@ -44,6 +42,7 @@ class ThreadQuickReply extends Component
 
         $this->validate();
 
+        //Insert post
         $post = Post::create([
             'forum_id' => $this->thread->forum_id,
             'thread_id' => $this->thread->id,
@@ -51,6 +50,8 @@ class ThreadQuickReply extends Component
             'post_author' => Auth::id(),
             'post_author_ip_address' => $request->ip(),
         ]);
+
+        //Update thread and forum
 
 
         // Putting the timestamp in the URL is required because LW can't tell the page was submitted on reload.

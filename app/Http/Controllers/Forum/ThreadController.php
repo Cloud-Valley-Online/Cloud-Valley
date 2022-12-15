@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Forum;
 
+use Illuminate\Support\Facades\Gate;
 use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\Post;

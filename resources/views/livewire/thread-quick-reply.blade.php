@@ -1,4 +1,4 @@
-<div x-data>
+<div x-data="{ open: false }" >
     <!-- Actual known issue -->
 <script>
     window.onhashchange = () => window.location.reload()

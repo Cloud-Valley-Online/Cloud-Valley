@@ -20,17 +20,20 @@
     <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
         <div class="row">
             @if ($posts[0])
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/forum">Cloud Valley Forums</a></li>
-                    <li class="breadcrumb-item">
-                        <a href="/forum/{{ $posts[0]->thread->forum->forum_name_clean}}/{{ $posts[0]->thread->forum_id }}">General Forums </a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $posts[0]->thread->forum->forum_name }}</li>
-                </ol>
-            </nav>
-            <!-- Begin Post logic -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/forum">Cloud Valley Forums</a></li>
+                        <li class="breadcrumb-item">
+                            <a
+                                href="/forum/{{ $posts[0]->thread->forum->forum_name_clean }}/{{ $posts[0]->thread->forum_id }}">General
+                                Forums </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $posts[0]->thread->forum->forum_name }}
+                        </li>
+                    </ol>
+                </nav>
 
+                <!-- Begin Post logic -->
                 <div class="col-sm-12 pagination">
                     {{ $posts->links() }}
                 </div>
@@ -39,7 +42,9 @@
 
         <div class="row title-area pb-2 mb-5">
             <div class="col-sm-10">
-                <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> {{ $posts[0]->thread->thread_subject }} </h1></div>
+                <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> {{ $posts[0]->thread->thread_subject }}
+                </h1>
+            </div>
             @if (Auth::check())
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 thread-buttons">
                     <div class="row align-items-start">

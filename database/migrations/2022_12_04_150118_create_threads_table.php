@@ -24,10 +24,9 @@ return new class extends Migration
             $table->string("thread_author");
             $table->char("thread_subject", 80);
             $table->text("thread_subject_clean");
-            $table->string("tags")->nullable();
             $table->integer("thread_has_poll")->default(0);
             $table->timestamp("last_reply_date");
-            $table->string("last_poster_name");
+            $table->integer("last_poster_id");
             $table->integer("reply_count")->default(1);
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();

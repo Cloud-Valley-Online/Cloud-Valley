@@ -10,6 +10,11 @@ class Thread extends Model
 {
     use HasFactory;
 
+     /**
+     * Allow mass assignment.
+     */
+    protected $guarded = [];
+
     /**
      * Get the Forum that owns the Thread.
      */
