@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('group_name');
             $table->text('group_desc');
             $table->integer('group_display')->default(1);
-            $table->integer('group_rank')->default(0);
+            $table->string('group_rank')->default(0);
             $table->string('group_color')->nullable();
             $table->timestamps();
         });

@@ -63,8 +63,6 @@ class ForumController extends Controller
             'tags' => 'required|max:200',
             'post' => 'required:max:5000',
         ]);
-
-
         if ($response->allowed())
 
         {
@@ -87,6 +85,13 @@ class ForumController extends Controller
                 'post_author_ip_address' => $request->ip(),
             ]);
 
+            $forum = Forum::where('id', $forum->id);
+
+            $forum->increment('forum_post_count', 1,);
+            $forum->increment('forum_thread_count', 1,);
+
+            return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->thread_subject_clean}/{$thread->id}#post.{$post->id}")
+                    ->with('message', "Thread successfully posted! You've earned x coins.");
         }
 
         else

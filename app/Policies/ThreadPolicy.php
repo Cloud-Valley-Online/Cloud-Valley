@@ -36,10 +36,10 @@ class ThreadPolicy
     }
 
     /**
-     * Determine whether the user can create a thread on the specified forum.
+     * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response Response|bool
+     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(User $user)
     {

@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Cloud Valley Town Square')
-
 @section('content')
 
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">

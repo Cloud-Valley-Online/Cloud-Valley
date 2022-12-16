@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string("forum_name_clean");
             $table->integer("forum_parents")->default(0);
             $table->text("forum_description");
-            $table->integer("forum_topic_count")->default(0);
             $table->integer("forum_post_count")->default(0);
             $table->integer("forum_subforum_count")->default(0);
             $table->integer("forum_thread_count")->default(0);

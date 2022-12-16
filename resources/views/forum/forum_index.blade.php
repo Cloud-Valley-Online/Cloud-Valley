@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Cloud Valley Forums')
-
 @section('content')
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
         @if(isset($forums[0]->category->name) && isset($forums[0]))
@@ -43,13 +41,12 @@
                                                     {{ $forum->forum_name }}
                                                 </h5>
                                             </a>
-                                            <p>Welcome to the Chatterbox! Stay around and have fun.</p>
+                                            <p>{{ $forum->forum_description }}</p>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-3 my-4">
                                             <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                                class="px-1">Threads 50k</span> <span
-                                                style="color:#5c656f; font-size: 80%;">Posts:
-                                                100K</span>
+                                                class="px-1">Threads: {{ $forum->forum_thread_count }}</span> <span
+                                                style="color:#5c656f; font-size: 80%;">Posts: {{ $forum->forum_post_count }}</span>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
@@ -75,13 +72,12 @@
                                                     {{ $forum->forum_name }}
                                                 </h5>
                                             </a>
-                                            <p>Welcome to the Chatterbox! Stay around and have fun.</p>
+                                            <p>{{ $forum->forum_description }}</p>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-3 my-4">
                                             <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
-                                                class="px-1">Threads 50k</span> <span
-                                                style="color:#5c656f; font-size: 80%;">Posts:
-                                                100K</span>
+                                                class="px-1">Threads: {{ $forum->forum_thread_count }}</span> <span
+                                                style="color:#5c656f; font-size: 80%;">Posts: {{ $forum->forum_post_count }}</span>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"

@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Posts')
-
 @section('content')
     <style>
         * {
@@ -10,11 +8,49 @@
         }
 
         .post {
-            border: 2px solid #818181;
             padding: 30px;
-            font-weight: 900;
             font-family: arial;
 
+        }
+
+        .speech-bubble {
+            position: relative;
+            border-radius: .4em;
+        }
+
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 13px solid transparent;
+            border-right-color: #818181;
+            border-left: 0;
+            border-bottom: 0;
+            margin-top: -6.5px;
+            margin-left: -13px;
+        }
+
+        .speech-bubble-reversed {
+            position: relative;
+            border-radius: .4em;
+        }
+
+        .speech-bubble-reversed:after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 13px solid transparent;
+            border-left-color: #818181;
+            border-right: 0;
+            border-bottom: 0;
+            margin-top: -6.5px;
+            margin-right: -13px;
         }
     </style>
     <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
@@ -72,9 +108,9 @@
             <div class="row posts">
                 @isset($posts)
                     @foreach ($posts as $key => $post)
-                        @if ($post->id % 2 == 1)
+                        @if ($key % 2 == 0)
                             <!-- Post area -->
-                            <div class="row post-area p-2 mb-2" id="post.{{ $post->id }}">
+                            <div class="row post-area p-2 mb-2" id="post.{{ $key }}">
                                 <div class="col-sm-2 post-avi-side" style="width:150px;">
                                     <div class="row post-username">
                                         <div class="col">
@@ -125,13 +161,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="row post-bubble">
+                                    <div class="row speech-bubble">
                                         <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
-                                            <p style="font-weight:100;">
+                                            <p>
                                                 {!! $post->post_text !!}
                                             </p>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <hr>
@@ -148,7 +185,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row post-bubble">
+                                    <div class="row speech-bubble-reversed">
                                         <div class="col post mt-3 rounded" style="border:2px solid #818181; ">
                                             <p style="font-weight:100 !important;">
                                                 {!! $post->post_text !!}
