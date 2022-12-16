@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@section('title', 'Cloud Valley | New Thread')
-
 @section('content')
 
     <x-head.tinymce-config />
