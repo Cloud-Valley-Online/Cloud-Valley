@@ -2,13 +2,14 @@
 
 @section('content')
     <div class="container main-content-wrapper border border-dark border-1 rounded p-2 shadow-sm">
-        @if(isset($forums[0]->category->name) && isset($forums[0]))
+        @if (isset($forums[0]->category->name) && isset($forums[0]))
             <div class="row">
                 <div class="col-sm-9">
                     <div class=" mx-auto">
                         <ul class="nav nav-tabs forum-nav mb-5">
                             <li class="nav-item">
-                                <a class="nav-link active" style="background:#4d6c99; color:white;" href="#">Forum List</a>
+                                <a class="nav-link active" style="background:#4d6c99; color:white;" href="#">Forum
+                                    List</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-gray" href="#">Trending </a>
@@ -46,12 +47,14 @@
                                         <div class="col-xs-12 col-sm-12 col-md-3 my-4">
                                             <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
                                                 class="px-1">Threads: {{ $forum->forum_thread_count }}</span> <span
-                                                style="color:#5c656f; font-size: 80%;">Posts: {{ $forum->forum_post_count }}</span>
+                                                style="color:#5c656f; font-size: 80%;">Posts:
+                                                {{ $forum->forum_post_count }}</span>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
                                                 alt="avatar headshot">
-                                            <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a
+                                            <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is
+                                                a
                                                 new
                                                 thread come join me us...</a>
                                             <small style="color:#5c656f;">
@@ -77,12 +80,14 @@
                                         <div class="col-xs-12 col-sm-12 col-md-3 my-4">
                                             <span style="color:#5c656f; font-size: 80%; border-right: 1px solid black;"
                                                 class="px-1">Threads: {{ $forum->forum_thread_count }}</span> <span
-                                                style="color:#5c656f; font-size: 80%;">Posts: {{ $forum->forum_post_count }}</span>
+                                                style="color:#5c656f; font-size: 80%;">Posts:
+                                                {{ $forum->forum_post_count }}</span>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
                                             <img src="https://a1cdn.gaiaonline.com/dress-up/avatar/ava/39/6f/418277428f6f39_48x48.gif?t=1538183181_6.00_00"
                                                 alt="avatar headshot">
-                                            <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is a
+                                            <a href="Is this" class="text-decoration-none bolder" style="color:#212121">This is
+                                                a
                                                 new
                                                 thread come join me us...</a>
                                             <small style="color:#5c656f;">
@@ -95,14 +100,15 @@
                         @endisset
                     </div>
                 </div>
-
+                <!-- Top posters -->
                 <div class="col-sm-3">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card shadow-sm">
                                 <div class="card-body">
 
-                                    <h5 class="card-title"><i class="fa-solid fa-face-grin-stars"></i> Top poster of the month!
+                                    <h5 class="card-title"><i class="fa-solid fa-face-grin-stars"></i> Top poster of the
+                                        month!
                                     </h5>
                                     <small class="card-text">Top posters get an exclusive crown item and a custom flair! <a
                                             href="">learn more</a></small>
@@ -144,9 +150,9 @@
                 </div>
             </div>
         @else
-        <div class="alert alert-warning">
-            <p>There are currently no forums to show!</p>
-        </div>
+            <div class="alert alert-warning">
+                <p>There are currently no forums to show!</p>
+            </div>
         @endif
     </div>
 @endsection

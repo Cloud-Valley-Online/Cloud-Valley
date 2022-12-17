@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Forum;
 
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\Post;
@@ -22,13 +23,13 @@ class ThreadController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Thread.
      *
      * @return \Illuminate\Http\Response
      */
     public function create($forum_id)
     {
-        return view('forum.compose');
+        return view('components.forum.compose');
     }
 
     /**
@@ -43,13 +44,12 @@ class ThreadController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display a thread and it's posts on a forum.
      *
-     * @param  \App\Models\Thread  $thread
+     * @param  string  $forum_name
+     * @param  string  $thread_subject
+     * @param  int     $thread_id
      * @return \Illuminate\Http\Response
-     *
-     * Putting the timestamp in the URL is required because LW can't tell the page was submitted on reload.
-     * See: https://github.com/livewire/livewire/issues/289
      */
     public function show($forum_name, $thread_subject, $thread_id)
     {
@@ -57,20 +57,20 @@ class ThreadController extends Controller
 
         $thread = Thread::findOrFail($thread_id);
 
-        //Verify route is using correct params.
+        //Verify route is using a sanitized URI for SEO purposes.
         if($thread->thread_subject_clean == $thread_subject &&
            $thread->forum->forum_name_clean == $forum_name)
         {
             return view('forum.forum_thread_posts', [
-                'posts' => $thread->posts()->paginate(15)->appends(['t' => time()])
+                'posts' => $thread->posts()->paginate(15)
             ]);
         }
 
         else
+
         {
             abort(404);
         }
-
 
     }
 
@@ -106,5 +106,55 @@ class ThreadController extends Controller
     public function destroy(Thread $thread)
     {
         //
+    }
+
+     /**
+     * Store posts on a thrad.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storepost(Request $request)
+    {
+        $thread = Thread::findOrfail($request->input('thread_id'));
+
+        $request->validate([
+            'post' => 'required|max:8000',
+        ]);
+
+        $response = Gate::inspect('canPost', $thread);
+
+        if ($response->allowed())
+
+        {
+
+        //Insert post
+        $post = Post::create([
+            'forum_id' => $thread->forum_id,
+            'thread_id' => $thread->id,
+            'post_text' => $request->input('post'),
+            'post_author' => Auth::id(),
+            'post_author_ip_address' => $request->ip(),
+        ]);
+
+        //Update Thread
+        Thread::where('id', $thread->id)
+        ->increment('reply_count', 1, ['last_reply_date' => now(),
+                                    'last_poster_id' => Auth::id()]);
+        //Update forum
+        Forum::where('id', $thread->forum->id)
+        ->increment('forum_post_count', 1);
+
+        return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->thread_subject_clean}/{$thread->id}")
+                ->with('message', "Post successful! You've been granted x coins!");
+        }
+
+        else
+
+        {
+            abort(403, $response->message());
+        }
+
+        return view('forum.components.quick-reply');
     }
 }

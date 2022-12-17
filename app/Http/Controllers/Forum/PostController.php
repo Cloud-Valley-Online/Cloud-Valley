@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Forum;
 
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Forum;
+use App\Models\Thread;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('forum.forum_index', [
-            'forums' => Forum::all()
-        ]);
+        //
     }
 
     /**

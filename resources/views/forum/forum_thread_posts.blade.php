@@ -22,7 +22,7 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 50%;
+            top: 15%;
             width: 0;
             height: 0;
             border: 13px solid transparent;
@@ -42,7 +42,7 @@
             content: '';
             position: absolute;
             right: 0;
-            top: 50%;
+            top: 15%;
             width: 0;
             height: 0;
             border: 13px solid transparent;
@@ -53,7 +53,7 @@
             margin-right: -13px;
         }
     </style>
-    <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
+    <div x-data class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
         <div class="row">
             @if ($posts[0])
                 <nav aria-label="breadcrumb">
@@ -97,13 +97,13 @@
 
         </div>
 
-        <div class="row thread-tools-are" style="border-bottom:1px solid #c8c9cb; ">
-            <!-- LW Component-->
-            @if (Auth::check())
-                @livewire('thread-quick-reply', ['thread' => $posts[0]->thread, 'last_page' => $posts->lastpage()])
+        <div class="row thread-tools-area" style="border-bottom:1px solid #c8c9cb; ">
+            <!-- Component-->
+            @if(Auth::check())
+                <x-forum.quick-reply/>
             @endif
-
         </div>
+
         <div class="container">
             <div class="row posts">
                 @isset($posts)
@@ -155,14 +155,16 @@
                                 <div class="col-sm-10">
                                     <div class="row post-buttons mt-2">
                                         <div class="col">
-                                            <button type="button" class="btn btn-sm btn-primary">Quote</button>
-                                            <button type="button" class="btn btn-sm btn-secondary">Tip</button>
-                                            <button type="button" class="btn btn-sm btn-success">React</button>
+                                            <button type="button" x-on:click="tinymce.activeEditor.execCommand('mceInsertContent', false, '<br>@quote:{{ userIdToUsername($post->post_author) }} </br>')" class="btn btn-sm btn-primary">Quote</button>
+                                            <button type="button" class="btn btn-sm btn-primary">Tip</button>
+                                            <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                                            <button type="button" class="btn btn-sm btn-success">Delete</button>
+                                            <a href="/report">report</a>
                                         </div>
                                     </div>
 
                                     <div class="row speech-bubble">
-                                        <div class="col post mt-2 rounded" style="border:2px solid #818181; ">
+                                        <div class="col post mt-2 rounded overflow-auto" style="border:2px solid #818181; ">
                                             <p>
                                                 {!! $post->post_text !!}
                                             </p>
@@ -186,8 +188,8 @@
                                     </div>
 
                                     <div class="row speech-bubble-reversed">
-                                        <div class="col post mt-3 rounded" style="border:2px solid #818181; ">
-                                            <p style="font-weight:100 !important;">
+                                        <div class="col post mt-3 rounded overflow-auto" style="border:2px solid #818181; ">
+                                            <p>
                                                 {!! $post->post_text !!}
                                             </p>
                                         </div>
@@ -248,10 +250,9 @@
                 </div>
             @else
                 <div class="alert alert-danger">Uh oh there was a problem, no posts were found! Please report this.</div>
-                @endif
+            @endif
                 <!-- End post logic -->
             </div>
         </div>
     </div>
-    @livewireScripts
 @endsection

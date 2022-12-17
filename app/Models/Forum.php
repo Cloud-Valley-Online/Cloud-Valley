@@ -10,6 +10,11 @@ class Forum extends Model
     use HasFactory;
 
     /**
+     * Allow mass assignment.
+     */
+    protected $guarded = [];
+
+    /**
      * Get the Category that owns the Forum.
      */
     public function category()

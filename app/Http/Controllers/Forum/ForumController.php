@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class ForumController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Show the forums on main page.
      *
      * @return \Illuminate\Http\Response
      */
@@ -53,16 +53,16 @@ class ForumController extends Controller
      */
     public function storethread(Request $request)
     {
-
         $forum = Forum::findOrFail($request->input('forum_id'));
 
         $response = Gate::inspect('createthread', $forum);
 
-        $validated = $request->validate([
+        $request->validate([
             'subject' => 'required|max:80',
             'tags' => 'required|max:200',
             'post' => 'required:max:5000',
         ]);
+
         if ($response->allowed())
 
         {
@@ -100,12 +100,12 @@ class ForumController extends Controller
             abort(403, $response->message());
         }
 
-        return view('forum.compose');
+        return view('forum.components.compose');
 
     }
 
     /**
-     * Display the specified resource.
+     * Show the threads on the forum specified.
      *
      * @param  \App\Models\Forum  $forum
      * @return \Illuminate\Http\Response
@@ -116,8 +116,9 @@ class ForumController extends Controller
 
        $forum = Forum::findOrFail($forum_id);
 
-       //Verify route is using correct params.
+       //Verify route is using a sanitized URI for SEO purposes.
        if($forum->forum_name_clean == $forum_name)
+
        {
 
         return view('forum.forum_threads', [
@@ -130,6 +131,7 @@ class ForumController extends Controller
        }
 
        else
+
        {
             abort(404);
        }

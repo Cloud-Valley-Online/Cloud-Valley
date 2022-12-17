@@ -105,19 +105,23 @@ class ThreadPolicy
      */
     public function canPost(User $user, Thread $thread)
     {
+        //User not banned and thread is not locked. Continue.
          if($user->account_status === config('users.USER_IS_NOT_BANNED') &&
             $thread->thread_locked === config('forum.THREAD_IS_NOT_LOCKED'))
          {
             return Response::allow('Post successful');
          }
 
+         //User is not banned, but thread is locked. Error.
          else if($thread->thread_locked === config('forum.THREAD_IS_LOCKED') &&
                  $user->account_status === config('users.USER_IS_NOT_BANNED'))
          {
             return Response::deny('Thread is locked');
          }
 
+         //User is banned, kick out.
          else if($user->account_status === config('users.USER_IS_BANNED'))
+
          {
             return redirect('/logout');
          }

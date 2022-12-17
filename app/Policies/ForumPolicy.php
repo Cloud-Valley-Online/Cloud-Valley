@@ -70,9 +70,10 @@ class ForumPolicy
 
         //Banned user - kick out.
         else if($user->account_status === config('users.USER_IS_BANNED'))
-         {
+
+        {
             return redirect('/logout');
-         }
+        }
 
 
     }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <x-head.tinymce-config />
+    <x-head.tinymce-config-default />
 
     <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
 
@@ -59,9 +59,6 @@
                     </ul>
                 </div>
             @endif
-
-                <!-- Load TinyMCE config -->
-                <x-head.tinymce-config />
 
                 <form method="post" action="/forum/storethread">
                     @csrf

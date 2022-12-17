@@ -17,10 +17,7 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Sub Forums -->
-
-
                     <div class="row">
                         <div class="col-12">
                             <div class="alert alert-success">
@@ -70,8 +67,6 @@
                                             @elseif($thread->thread_stuck)
                                                 <span><i class="fa-solid fa-note-sticky"></i> Sticky:</span>
                                             @endif
-
-
 
 
                                             <a class="text-decoration-none"

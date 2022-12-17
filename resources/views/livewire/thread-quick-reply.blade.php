@@ -11,7 +11,7 @@
   tinymce.init({
     selector: 'textarea#myeditorinstance',
     plugins: 'lists emoticons autolink link image',
-    toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | link image media emoticons | bullist numlist  ',
+    toolbar: 'undo redo | formatselect| bold italic blockquote | alignleft aligncenter alignright | link image media emoticons | bullist numlist ',
     menubar: '',
     setup: function (editor) {
                editor.on('init change', function () {
@@ -112,7 +112,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row post-bubble">
+                                <div class="row post-bubble overflow-auto">
                                     <div class="col-12 post mt-2 rounded" style="border:2px solid #818181; ">
                                         <p style="font-weight:100;" class="post-body">
                                            {!!  Purifier::clean($post) !!}
