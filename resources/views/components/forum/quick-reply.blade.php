@@ -47,7 +47,7 @@
                                 <h3>Quick reply</h3>
                                 <textarea name="post" id="post"></textarea>
                                 <button class="btn btn-primary mt-1">Submit</button>
-                                <input type="hidden" name="thread_id" value={{ last(request()->segments()) }}>
+                                <input type="hidden" name="thread_id" value={{ request()->segment(3) }}>
                             </form>
                         </div>
                         <!-- Preview area -->

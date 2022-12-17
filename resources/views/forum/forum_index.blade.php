@@ -69,7 +69,7 @@
                                                 class="img-rounded" alt="Chatterbox">
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-4">
-                                            <a href="/forum/{{ $forum->forum_name_clean }}/{{ $forum->id }}"
+                                            <a href="/forum/{{ $forum->id }}/{{ $forum->forum_name_clean }}"
                                                 class="text-decoration-none">
                                                 <h5 style="color:#4e6c9a;">
                                                     {{ $forum->forum_name }}

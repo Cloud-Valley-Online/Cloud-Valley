@@ -28,7 +28,7 @@
 
                 <div class="row justify-content-center">
                     <div class="col-2">
-                       <a href="/forum/compose/thread/new/{{ last(request()->segments()) }}">
+                       <a href="/forum/compose/thread/new/{{ request()->segment(2) }}">
                             <button class="btn btn-primary">New Topic</button>
                        </a>
                     </div>
@@ -70,7 +70,7 @@
 
 
                                             <a class="text-decoration-none"
-                                                href="/forum/{{ $thread->forum->forum_name_clean }}/{{ $thread->thread_subject_clean }}/{{ $thread->id }}">
+                                                href="/forum/{{ $thread->forum->forum_name_clean }}/{{ $thread->id }}/{{ $thread->thread_subject_clean }}">
                                                 <span>{{ $thread->thread_subject }}</span>
                                             </a>
 

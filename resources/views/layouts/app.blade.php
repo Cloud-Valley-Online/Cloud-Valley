@@ -56,7 +56,7 @@
                 <div class="col-sm-6" >
                     <div class="row avi-area">
                         <div class="col-sm-3">
-                            <h1 class="white">Cloud Valley</h1>
+                            <h1 class="white">{{  config('app.name') }}</h1>
                         </div>
                         @if (Auth::check())
                             <div class="col-sm-4 col-md-9">
@@ -259,7 +259,7 @@
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2023 Copyright:
-            Cloud Valley
+            {{ config('app.name') }}
         </div>
         <!-- Copyright -->
     </footer>

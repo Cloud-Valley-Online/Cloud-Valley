@@ -27,14 +27,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Forum
 Route::get('/forum', [App\Http\Controllers\Forum\ForumController::class, 'index'])->name('forum');
-Route::get('/forum/{forum_name}/{forum_id}', [App\Http\Controllers\Forum\ForumController::class, 'show']);
+Route::get('/forum/{forum_id}/{forum_name}', [App\Http\Controllers\Forum\ForumController::class, 'show']);
 Route::post('/forum/storethread', [App\Http\Controllers\Forum\ForumController::class, 'storethread'])->middleware('auth');
 
 //Threads
-Route::get('/forum/{forum_name}/{thread_subject}/{thread_id}', [App\Http\Controllers\Forum\ThreadController::class, 'show']);
+Route::get('/forum/{forum_name}/{thread_id}/{thread_subject}', [App\Http\Controllers\Forum\ThreadController::class, 'show']);
 Route::get('/forum/compose/thread/new/{forum_id}', [App\Http\Controllers\Forum\ThreadController::class, 'create'])->middleware('auth');
-
-//Posts
 Route::post('/forum/thread/storepost', [App\Http\Controllers\Forum\ThreadController::class, 'storepost'])->middleware('auth');
 
 

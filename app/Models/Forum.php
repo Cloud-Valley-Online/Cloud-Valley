@@ -19,7 +19,7 @@ class Forum extends Model
      */
     public function category()
     {
-        return $this->belongsTo(ForumCategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     /**

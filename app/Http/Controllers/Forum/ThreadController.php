@@ -51,7 +51,7 @@ class ThreadController extends Controller
      * @param  int     $thread_id
      * @return \Illuminate\Http\Response
      */
-    public function show($forum_name, $thread_subject, $thread_id)
+    public function show($forum_name, $thread_id, $thread_subject)
     {
         //$posts = Post::factory()->count(100)->create(); // Generate 100 fake posts
 
@@ -109,7 +109,7 @@ class ThreadController extends Controller
     }
 
      /**
-     * Store posts on a thrad.
+     * Store posts on a thread.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -145,7 +145,10 @@ class ThreadController extends Controller
         Forum::where('id', $thread->forum->id)
         ->increment('forum_post_count', 1);
 
-        return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->thread_subject_clean}/{$thread->id}")
+        //Grab pagination last_page --seems inefficent...
+        $posts = Post::where('thread_id', $thread->id)->paginate(15);
+
+        return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->id}/{$thread->thread_subject_clean}?page={$posts->lastPage()}#post.{$post->id}")
                 ->with('message', "Post successful! You've been granted x coins!");
         }
 

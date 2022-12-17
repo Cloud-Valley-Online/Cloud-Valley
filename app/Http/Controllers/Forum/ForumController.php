@@ -90,7 +90,7 @@ class ForumController extends Controller
             $forum->increment('forum_post_count', 1,);
             $forum->increment('forum_thread_count', 1,);
 
-            return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->thread_subject_clean}/{$thread->id}#post.{$post->id}")
+            return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->id}/{$thread->thread_subject_clean}#post.{$post->id}")
                     ->with('message', "Thread successfully posted! You've earned x coins.");
         }
 
@@ -107,10 +107,11 @@ class ForumController extends Controller
     /**
      * Show the threads on the forum specified.
      *
-     * @param  \App\Models\Forum  $forum
+     * @param  int $forum_id
+     * @param  int $forum_name
      * @return \Illuminate\Http\Response
      */
-    public function show($forum_name, $forum_id)
+    public function show($forum_id, $forum_name)
     {
        //$threads = Thread::factory()->count(100)->create(); //Generate 100 fake threads.
 

@@ -58,10 +58,10 @@
             @if ($posts[0])
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/forum">Cloud Valley Forums</a></li>
+                        <li class="breadcrumb-item"><a href="/forum">{{ config('app.name') }} Forums</a></li>
                         <li class="breadcrumb-item">
                             <a
-                                href="/forum/{{ $posts[0]->thread->forum->forum_name_clean }}/{{ $posts[0]->thread->forum_id }}">General
+                                href="/forum/{{ $posts[0]->thread->forum_id }}/{{ $posts[0]->thread->forum->forum_name_clean }}">General
                                 Forums </a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $posts[0]->thread->forum->forum_name }}
@@ -110,7 +110,7 @@
                     @foreach ($posts as $key => $post)
                         @if ($key % 2 == 0)
                             <!-- Post area -->
-                            <div class="row post-area p-2 mb-2" id="post.{{ $key }}">
+                            <div class="row post-area p-2 mb-2" id="post.{{ $post->id }}">
                                 <div class="col-sm-2 post-avi-side" style="width:150px;">
                                     <div class="row post-username">
                                         <div class="col">

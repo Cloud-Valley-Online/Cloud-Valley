@@ -3,9 +3,9 @@
 
 <script>
     tinymce.init({
-        selector: 'textarea#myeditorinstance',
+        selector: 'textarea#newthread',
         plugins: 'lists emoticons autolink link image',
-        toolbar: 'undo redo | formatselect | bold italic blockquote | alignleft aligncenter alignright | link image media emoticons | bullist numlist ',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image media emoticons | bullist numlist ',
         menubar: false,
     });
 </script>

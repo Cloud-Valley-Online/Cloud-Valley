@@ -65,7 +65,7 @@ class ThreadQuickReply extends Component
         // Putting the timestamp in the URL is required because LW can't tell the page was submitted on reload.
         // See: https://github.com/livewire/livewire/issues/289
         $time = time();
-        return redirect("forum/{$this->thread->forum->forum_name_clean}/{$this->thread->thread_subject_clean}/{$this->thread->id}?t={$time}&page={$this->last_page}#post.{$post->id}")
+        return redirect("forum/{$this->thread->forum->forum_name_clean}/{$this->thread->thread_subject_clean}/{$this->thread->id}?t={$time}&page={$this->last_page}#post.{$post->id}#post.{$post->id}")
                 ->with('message', "Post successful! You've been granted x coins!");
     }
 }

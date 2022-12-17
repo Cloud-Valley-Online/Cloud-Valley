@@ -2,6 +2,7 @@ Forums
 maybe a mix between traditional forums & reddit.
 staff-badge like twitter
 abbility to add discord, twitch etc
+add tags underneath forums
 
 random notes
 shops - three day rotation?
@@ -35,25 +36,15 @@ forum_flares
 -text-shadow
 -color
 
-avatar_Items
-    item_id, item_name, item_image, item_thumb, item_special_type (enum), item_type, item_rarity, item_composite, item_layer, item_order
 
-avatar_Layers
-    id, layer_name, order, 'main_tab'
-
-avatar_layer_tabs
-CREATE TABLE `avatar_layer_tabs` (
-  `tab_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tab_name` varchar(32) NOT NULL,
-  tab_order
-  PRIMARY KEY (`tab_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 avatar_item_tags
 
 avatar_user_item_tags
 
+
+//For COMPOSITE items
 avatar_items_relations
  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) DEFAULT NULL,
@@ -62,7 +53,7 @@ avatar_items_relations
   KEY `Parent` (`parent_id`),
   KEY `Child` (`child_id`)
 
-
+//for ONE items with multiple parts
 CREATE TABLE `avatar_item_parts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `parent_item_id` int(11) unsigned NOT NULL,
@@ -73,6 +64,23 @@ CREATE TABLE `avatar_item_parts` (
   KEY `layer` (`layer`),
   KEY `item_id` (`item_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 CO
+
+
+avatar_layer_tabs
+CREATE TABLE `avatar_layer_tabs` (
+  `tab_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tab_name` varchar(32) NOT NULL,
+  tab_order
+  PRIMARY KEY (`tab_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+avatar_Items
+    item_id, item_name, item_image, item_thumb, item_special_type (enum), item_type, item_rarity, item_composite, item_layer, item_order
+
+avatar_Layers
+    id, layer_name, order, 'main_tab'
+
 
 CREATE TABLE `user_items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
