@@ -36,7 +36,8 @@ Route::get('/forum/compose/thread/new/{forum_id}', [App\Http\Controllers\Forum\T
 Route::post('/forum/thread/storepost', [App\Http\Controllers\Forum\ThreadController::class, 'storepost'])->middleware('auth');
 
 //Avatar
-Route::get('/avatar', [App\Http\Controllers\Avatar\AvatarController::class, 'show']);
+Route::get('/avatar', [App\Http\Controllers\Avatar\AvatarController::class, 'show'])->middleware('auth');
+Route::get('avatar/customize/{user_id}/{item_id?}', [App\Http\Controllers\Avatar\AvatarController::class, 'customize'])->middleware('auth');
 
 
 

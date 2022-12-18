@@ -15,6 +15,15 @@
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <style>
+        @media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+    </style>
+
 
     <!-- Scripts & Styles -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -43,7 +52,7 @@
                                         Hi, {{ userIdToUsername(Auth::id()) }}
                                       </a>
                                       <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" href={{ url('/logout') }}>Logout</a></li>
+                                        <li><a class="dropdown-item" href=>Logout</a></li>
                                         <li><a class="dropdown-item" href="#">settings</a></li>
                                  </ul>
                             </div>

@@ -38,6 +38,16 @@ forum_flares
 
 
 
+-subs 9.99
+Double the character limit on posts
+Able to link marketplace & items right in thread (no redirect)
+Monthly Item
+No Ads
+Sell more on marketplace
+No Marketplace tax
+beta-test features
+monthly exlusive flares
+Bonus gold on posting <?>
 
 avatar_item_tags
 
@@ -56,6 +66,17 @@ avatar_user_item_tags
 	('crop_height','60',''),
 	('thumbnail_width','42','');
 
+user_items
+`id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `equipped` int(11) unsigned NOT NULL DEFAULT '0',
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `trying_on` int(1) unsigned NOT NULL,
+  `soft_deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `soft_deleted_by_user_id` int(11) DEFAULT NULL,
+  `sent_by` int(11) DEFAULT NULL,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 //For COMPOSITE items
 avatar_items_relations

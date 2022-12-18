@@ -113,7 +113,7 @@
                             <div class="row post-area p-2 mb-2" id="post.{{ $post->id }}">
                                 <div class="col-sm-2 post-avi-side" style="width:150px;">
                                     <div class="row post-username">
-                                        <div class="col">
+                                        <div class="col flare">
                                             <img src="//graphics.gaiaonline.com/images/usericons/b15c767d65e9.png"
                                                 alt="flare">
                                             <b

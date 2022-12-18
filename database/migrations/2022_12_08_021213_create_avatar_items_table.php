@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('item_name');
             $table->string('item_image');
+            $table->string('item_preview_image');
             $table->string('item_thumb');
             $table->integer('item_special_type')->default(0);
             $table->enum('item_type', ['common', 'uncommon', 'rare', 'legendary', 'special'])->default('common');

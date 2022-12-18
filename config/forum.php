@@ -6,4 +6,6 @@ return [
 
     'THREAD_IS_LOCKED' => 1,
     'THREAD_IS_NOT_LOCKED' => 0,
+
+    'POST_CHARACTER_LIMIT' => 8000,
 ];
