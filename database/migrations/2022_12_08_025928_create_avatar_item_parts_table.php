@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('avatar_item_parts', function (Blueprint $table) {
             $table->id();
+            $table->integer('parent_id');
+            $table->string('name');
+            $table->string('layer');
+            $table->string('image_path');
             $table->timestamps();
         });
     }

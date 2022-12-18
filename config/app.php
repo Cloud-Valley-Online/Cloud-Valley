@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
          */
         Mews\Purifier\PurifierServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -212,5 +213,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
     ])->toArray(),
+    'Image' => Intervention\Image\Facades\Image::class,
 
 ];

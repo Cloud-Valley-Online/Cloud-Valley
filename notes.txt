@@ -43,6 +43,19 @@ avatar_item_tags
 
 avatar_user_item_tags
 
+('items_path','../images/items/',''),
+	('width','180',''),
+	('height','270',''),
+	('avatar_path','../images/avatars/',''),
+	('error_avatar','avatar_error.png',''),
+	('thumbnail_height','42',''),
+	('headshot_ext','headshot',''),
+	('crop_x','69',''),
+	('crop_y','40',''),
+	('crop_width','60',''),
+	('crop_height','60',''),
+	('thumbnail_width','42','');
+
 
 //For COMPOSITE items
 avatar_items_relations

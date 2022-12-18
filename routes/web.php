@@ -35,6 +35,8 @@ Route::get('/forum/{forum_name}/{thread_id}/{thread_subject}', [App\Http\Control
 Route::get('/forum/compose/thread/new/{forum_id}', [App\Http\Controllers\Forum\ThreadController::class, 'create'])->middleware('auth');
 Route::post('/forum/thread/storepost', [App\Http\Controllers\Forum\ThreadController::class, 'storepost'])->middleware('auth');
 
+//Avatar
+Route::get('/avatar', [App\Http\Controllers\Avatar\AvatarController::class, 'show']);
 
 
 
