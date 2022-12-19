@@ -59,11 +59,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/forum">{{ config('app.name') }} Forums</a></li>
-                        <li class="breadcrumb-item">
-                            <a
-                                href="/forum/{{ $posts[0]->thread->forum_id }}/{{ $posts[0]->thread->forum->forum_name_clean }}">General
-                                Forums </a>
-                        </li>
+                        <li class="breadcrumb-item"><a href="/forum">{{ $posts[0]->thread->forum->category->name }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $posts[0]->thread->forum->forum_name }}
                         </li>
                     </ol>
@@ -80,6 +76,14 @@
             <div class="col-sm-10">
                 <h1> <i class="fa-regular fa-file" style="font-size: 30px;"></i> {{ $posts[0]->thread->thread_subject }}
                 </h1>
+                <!-- tags -->
+                <small class="tags">
+                    @if ($tags)
+                       @foreach ($tags as $tag)
+                           <a href="">#{{ $tag->tag }}</a>
+                       @endforeach
+                    @endif
+                </small>
             </div>
             @if (Auth::check())
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 thread-buttons">
@@ -98,7 +102,7 @@
         </div>
 
         <div class="row thread-tools-area" style="border-bottom:1px solid #c8c9cb; ">
-            <!-- Component-->
+            <!-- Quick reply Component-->
             @if(Auth::check())
                 <x-forum.quick-reply/>
             @endif

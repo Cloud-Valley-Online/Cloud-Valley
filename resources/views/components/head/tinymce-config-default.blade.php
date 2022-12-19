@@ -4,8 +4,8 @@
 <script>
     tinymce.init({
         selector: 'textarea#newthread',
-        plugins: 'lists emoticons autolink link image',
-        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | link image media emoticons | bullist numlist ',
+        plugins: 'lists emoticons autolink link image textcolor colorpicker',
+        toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright forecolor backcolor | link image media emoticons | bullist numlist ',
         menubar: false,
     });
 </script>

@@ -10,9 +10,7 @@ return new class extends Migration
     {
         Schema::create('seo', function (Blueprint $table) {
             $table->id();
-
             $table->morphs('model');
-
             $table->longText('description')->nullable();
             $table->string('title')->nullable();
             $table->string('image')->nullable();

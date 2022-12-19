@@ -30,11 +30,11 @@
 
                     <ol class="breadcrumb">
 
-                        <li class="breadcrumb-item"><a href="/">{{ config('app.name') }}</a></li>
+                        <li class="breadcrumb-item"><a href="/forum">{{ config('app.name') }} Forums</a></li>
 
-                        <li class="breadcrumb-item"><a href="#">General Forums</a></li>
+                        <li class="breadcrumb-item"><a href="/forum">{{ $forum->category->name }}</a></li>
 
-                        <li class="breadcrumb-item active"> <a href="http://localhost/forum/{{ null }}/{{ null }}">Town Square</a>
+                        <li class="breadcrumb-item active"> <a href="/forum/{{ $forum->id }}/{{ $forum->forum_name_clean }}">{{ $forum->forum_name }}</a>
                         </li>
 
                         <li class="breadcrumb-item active" aria-current="page"> New Thread </li>

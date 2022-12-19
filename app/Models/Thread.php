@@ -24,11 +24,19 @@ class Thread extends Model
     }
 
     /**
-     * Get the threads assiocated with category.
+     * Get the posts assiocated with Thread.
      */
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Get the tags assiocated with Thread.
+     */
+    public function tags()
+    {
+        return $this->hasMany(ThreadTags::class);
     }
 
      /**

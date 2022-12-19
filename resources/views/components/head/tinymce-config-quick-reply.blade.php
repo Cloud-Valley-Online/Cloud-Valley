@@ -4,9 +4,9 @@
 <script>
   tinymce.init({
     selector: 'textarea#post',
-    plugins: 'lists emoticons autolink link image paste',
+    plugins: 'lists emoticons autolink link image paste textcolor colorpicker',
     paste_as_text: true,
-    toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | link image media emoticons | bullist numlist ',
+    toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright forecolor backcolor | link image media emoticons | bullist numlist ',
     menubar: '',
     setup: function (editor) {
                 editor.on('input change', function () {

@@ -29,7 +29,9 @@ class ThreadController extends Controller
      */
     public function create($forum_id)
     {
-        return view('components.forum.compose');
+        $forum = Forum::findOrFail($forum_id);
+
+        return view('components.forum.compose', ['forum' => $forum]);
     }
 
     /**
@@ -58,20 +60,17 @@ class ThreadController extends Controller
         $thread = Thread::findOrFail($thread_id);
 
         //Verify route is using a sanitized URI for SEO purposes.
-        if($thread->thread_subject_clean == $thread_subject &&
-           $thread->forum->forum_name_clean == $forum_name)
-        {
+        if (
+            $thread->thread_subject_clean == $thread_subject &&
+            $thread->forum->forum_name_clean == $forum_name
+        ) {
             return view('forum.forum_thread_posts', [
-                'posts' => $thread->posts()->paginate(15)
+                'posts' => $thread->posts()->paginate(15),
+                'tags' => $thread->tags,
             ]);
-        }
-
-        else
-
-        {
+        } else {
             abort(404);
         }
-
     }
 
     /**
@@ -108,13 +107,13 @@ class ThreadController extends Controller
         //
     }
 
-     /**
+    /**
      * Store posts on a thread.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storepost(Request $request)
+    public function storepost(Request $request, $forum_id)
     {
         $thread = Thread::findOrfail($request->input('thread_id'));
 
@@ -124,40 +123,36 @@ class ThreadController extends Controller
 
         $response = Gate::inspect('canPost', $thread);
 
-        if ($response->allowed())
+        if ($response->allowed()) {
 
-        {
+            //Insert post
+            $post = Post::create([
+                'forum_id' => $thread->forum_id,
+                'thread_id' => $thread->id,
+                'post_text' => $request->input('post'),
+                'post_author' => Auth::id(),
+                'post_author_ip_address' => $request->ip(),
+            ]);
 
-        //Insert post
-        $post = Post::create([
-            'forum_id' => $thread->forum_id,
-            'thread_id' => $thread->id,
-            'post_text' => $request->input('post'),
-            'post_author' => Auth::id(),
-            'post_author_ip_address' => $request->ip(),
-        ]);
+            //Update Thread
+            Thread::where('id', $thread->id)
+                ->increment('reply_count', 1, [
+                    'last_reply_date' => now(),
+                    'last_poster_id' => Auth::id()
+                ]);
+            //Update forum
+            Forum::where('id', $thread->forum->id)
+                ->increment('forum_post_count', 1);
 
-        //Update Thread
-        Thread::where('id', $thread->id)
-        ->increment('reply_count', 1, ['last_reply_date' => now(),
-                                    'last_poster_id' => Auth::id()]);
-        //Update forum
-        Forum::where('id', $thread->forum->id)
-        ->increment('forum_post_count', 1);
+            //Grab pagination last_page --seems inefficent...
+            $posts = Post::where('thread_id', $thread->id)->paginate(15);
 
-        //Grab pagination last_page --seems inefficent...
-        $posts = Post::where('thread_id', $thread->id)->paginate(15);
-
-        return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->id}/{$thread->thread_subject_clean}?page={$posts->lastPage()}#post.{$post->id}")
+            return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->id}/{$thread->thread_subject_clean}?page={$posts->lastPage()}#post.{$post->id}")
                 ->with('message', "Post successful! You've been granted x coins!");
-        }
-
-        else
-
-        {
+        } else {
             abort(403, $response->message());
         }
 
-        return view('forum.components.quick-reply');
+        return view('forum.components.quick-reply', ['thread' => $thread]);
     }
 }

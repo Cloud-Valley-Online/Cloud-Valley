@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Forum;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\ThreadTags;
 use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\Post;
@@ -59,13 +60,13 @@ class ForumController extends Controller
 
         $request->validate([
             'subject' => 'required|max:80',
-            'tags' => 'required|max:200',
+            'tags' => 'required|max:50',
             'post' => 'required:max:5000',
         ]);
 
-        if ($response->allowed())
-
-        {
+        if ($response->allowed()) {
+            //Sanitize title & Tags.
+            $tags = seperateKeywordsFromTags($request->input('tags'));
             $cleaned_string = cleanString($request->input('subject'));
 
             $thread = Thread::create([
@@ -85,23 +86,28 @@ class ForumController extends Controller
                 'post_author_ip_address' => $request->ip(),
             ]);
 
-            $forum = Forum::where('id', $forum->id);
+            //Insert tags.
+            foreach ($tags as $tag) {
+                if(!empty($tag)){
+                    ThreadTags::create([
+                        'tag' => $tag,
+                        'thread_id' => $thread->id
+                    ]);
+                }
+            }
 
+            //Increment counts for the forum.
+            $forum = Forum::where('id', $forum->id);
             $forum->increment('forum_post_count', 1,);
             $forum->increment('forum_thread_count', 1,);
 
             return redirect("forum/{$thread->forum->forum_name_clean}/{$thread->id}/{$thread->thread_subject_clean}#post.{$post->id}")
-                    ->with('message', "Thread successfully posted! You've earned x coins.");
-        }
-
-        else
-
-        {
+                ->with('message', "Thread successfully posted! You've earned x coins.");
+        } else {
             abort(403, $response->message());
         }
 
         return view('forum.components.compose');
-
     }
 
     /**
@@ -113,31 +119,22 @@ class ForumController extends Controller
      */
     public function show($forum_id, $forum_name)
     {
-       //$threads = Thread::factory()->count(100)->create(); //Generate 100 fake threads.
+        //$threads = Thread::factory()->count(100)->create(); //Generate 100 fake threads.
 
-       $forum = Forum::findOrFail($forum_id);
+        $forum = Forum::findOrFail($forum_id);
 
-       //Verify route is using a sanitized URI for SEO purposes.
-       if($forum->forum_name_clean == $forum_name)
+        //Verify route is using a sanitized URI for SEO purposes.
+        if ($forum->forum_name_clean == $forum_name) {
 
-       {
-
-        return view('forum.forum_threads', [
-            'threads' => $forum->threads()->orderBy('thread_announced', 'desc')
-                                          ->orderBy('thread_stuck', 'desc')
-                                          ->orderBy('last_reply_date', 'desc')
-                                          ->paginate(25)
-        ]);
-
-       }
-
-       else
-
-       {
+            return view('forum.forum_threads', [
+                'threads' => $forum->threads()->orderBy('thread_announced', 'desc')
+                    ->orderBy('thread_stuck', 'desc')
+                    ->orderBy('last_reply_date', 'desc')
+                    ->paginate(25)
+            ]);
+        } else {
             abort(404);
-       }
-
-
+        }
     }
 
     /**

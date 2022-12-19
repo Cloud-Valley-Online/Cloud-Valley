@@ -17,11 +17,20 @@
 
     <style>
         @media all and (min-width: 992px) {
-	.navbar .nav-item .dropdown-menu{ display: none; }
-	.navbar .nav-item:hover .nav-link{   }
-	.navbar .nav-item:hover .dropdown-menu{ display: block; }
-	.navbar .nav-item .dropdown-menu{ margin-top:0; }
-}
+            .navbar .nav-item .dropdown-menu {
+                display: none;
+            }
+
+            .navbar .nav-item:hover .nav-link {}
+
+            .navbar .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+
+            .navbar .nav-item .dropdown-menu {
+                margin-top: 0;
+            }
+        }
     </style>
 
 
@@ -42,26 +51,33 @@
                 @if (Auth::check())
                     <div class="col-4 white align-self-end">
                         <div class="row"">
-                            <div class="col-sm-3 rounded mx-1 " style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-coins"></i> 500</div>
-                            <div class="col-sm-3 rounded mx-1" style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i class="fa-solid fa-cloud"></i></i> 500</div>
+                            <div class="col-sm-3 rounded mx-1 "
+                                style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i
+                                    class="fa-solid fa-coins"></i> 500</div>
+                            <div class="col-sm-3 rounded mx-1"
+                                style="border:1px solid #8c8c8c3a; background:#3a3a3a; height:30px;"><i
+                                    class="fa-solid fa-cloud"></i></i> 500</div>
 
                             <div class="col-sm-3 rounded"style="border:1px solid #8c8c8c3a; background:#3a3a3a;">
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">
-                                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Hi, {{ userIdToUsername(Auth::id()) }}
-                                      </a>
-                                      <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a></li>
-                                        <li><a class="dropdown-item" href="#">settings</a></li>
+                                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Hi, {{ userIdToUsername(Auth::id()) }}
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-dark">
+                                            <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    Logout
+                                                </a></li>
+                                            <li><a class="dropdown-item" href="#">settings</a></li>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                      </ul>
-                                 </ul>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </ul>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -69,10 +85,10 @@
             </div>
 
             <div class="row header-main-content">
-                <div class="col-sm-6" >
+                <div class="col-sm-6">
                     <div class="row avi-area">
                         <div class="col-sm-3">
-                            <h1 class="white">{{  config('app.name') }}</h1>
+                            <h1 class="white">{{ config('app.name') }}</h1>
                         </div>
                         @if (Auth::check())
                             <div class="col-sm-4 col-md-9">
@@ -114,7 +130,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href={{ url('/currency') }}><i class="fa-solid fa-cloud"></i> Clouds</a>
+                                <a class="nav-link" href={{ url('/currency') }}><i class="fa-solid fa-cloud"></i>
+                                    Clouds</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
@@ -151,10 +168,12 @@
                         </ul>
                         <form class="d-flex" role="search">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                                <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                <span class="input-group-text" id="basic-addon1"><i
+                                        class="fa-solid fa-magnifying-glass"></i></span>
+                                <input type="text" class="form-control" aria-label="Username"
+                                    aria-describedby="basic-addon1">
                                 <button class="btn btn-sm btn-outline-primary" type="submit">Search</button>
-                              </div>
+                            </div>
 
                         </form>
                     </div>
