@@ -20,7 +20,6 @@
                 <div class="equipped-items-area" style="border:1px solid red;">
                     equipped items <br>
                     Estimated marketplace value
-                    test
                 </div>
 
                 <div class="equipped-items-area">
