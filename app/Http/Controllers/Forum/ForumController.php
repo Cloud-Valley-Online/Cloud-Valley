@@ -9,6 +9,7 @@ use App\Models\ThreadTags;
 use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\Post;
+use App\Models\PollOptions;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
@@ -69,9 +70,9 @@ class ForumController extends Controller
             $tags = seperateKeywordsFromTags($request->input('tags'));
             $cleaned_string = cleanString($request->input('subject'));
 
-            //Check poll
+            //Check poll and return newly created thread.
             if ($request->input('poll-question')) {
-                $this->handleThreadPoll($request, $forum->id, $cleaned_string);
+                $thread = $this->handleThreadPoll($request, $forum->id, $cleaned_string);
             } else {
                 //Thread created without a poll.
                 $thread = Thread::create([
@@ -118,10 +119,15 @@ class ForumController extends Controller
 
     /**
      * Handiling my TERRIBLE poll logic. <-- Need to improve greatly!!
+     *
+     * @param Illuminate\Http\Request $request
+     * @param integer $forum_id
+     * @param string $cleaned_string
+     * return App\Models\Thread $thread
      */
     private function handleThreadPoll(Request $request, $forum_id, $cleaned_string)
     {
-        //Thread created without a poll.
+        //Thread created with a poll.
         $thread = Thread::create([
             'forum_id' => $forum_id,
             'thread_author' => Auth::id(),
@@ -130,15 +136,20 @@ class ForumController extends Controller
             'last_reply_date' => now(),
             'last_poster_id' => Auth::id(),
             'poll_title' => $request->input('poll-question'),
-
         ]);
 
-        for($count = 8; $count >= 8; $count++)
-        {
 
+        for ($count = 0; $count <= 10; $count++) {
+            if (!empty($request->input("option{$count}"))) {
+                PollOptions::create([
+                    'thread_id' => $thread->id,
+                    'poll_option_text' => $request->input("option{$count}"),
+                    'poll_option_total' => 0, //Redundant, remember to remove as it's default(0) now
+                ]);
+            }
         }
 
-
+        return $thread;
     }
 
     /**
@@ -146,7 +157,7 @@ class ForumController extends Controller
      *
      * @param  int $forum_id
      * @param  int $forum_name
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|View
      */
     public function show($forum_id, $forum_name)
     {
@@ -160,7 +171,7 @@ class ForumController extends Controller
             return view('forum.forum_threads', [
                 'threads' => $forum->threads()->orderBy('thread_announced', 'desc')
                     ->orderBy('thread_stuck', 'desc')
-                    ->orderBy('last_reply_date', 'asc')
+                    ->orderBy('last_reply_date', 'desc')
                     ->paginate(25)
             ]);
         } else {

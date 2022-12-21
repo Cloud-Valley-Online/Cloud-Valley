@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('thread_id');
             $table->text('poll_option_text');
-            $table->integer('poll_option_total');
+            $table->integer('poll_option_total')->default(0);
             $table->timestamps();
 
         });
