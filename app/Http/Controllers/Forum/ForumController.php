@@ -69,14 +69,20 @@ class ForumController extends Controller
             $tags = seperateKeywordsFromTags($request->input('tags'));
             $cleaned_string = cleanString($request->input('subject'));
 
-            $thread = Thread::create([
-                'forum_id' => $forum->id,
-                'thread_author' => Auth::id(),
-                'thread_subject' => $request->input('subject'),
-                'thread_subject_clean' => $cleaned_string,
-                'last_reply_date' => now(),
-                'last_poster_id' => Auth::id(),
-            ]);
+            //Check poll
+            if ($request->input('poll-question')) {
+                $this->handleThreadPoll($request, $forum->id, $cleaned_string);
+            } else {
+                //Thread created without a poll.
+                $thread = Thread::create([
+                    'forum_id' => $forum->id,
+                    'thread_author' => Auth::id(),
+                    'thread_subject' => $request->input('subject'),
+                    'thread_subject_clean' => $cleaned_string,
+                    'last_reply_date' => now(),
+                    'last_poster_id' => Auth::id(),
+                ]);
+            }
 
             $post = Post::create([
                 'forum_id' => $forum->id,
@@ -88,7 +94,7 @@ class ForumController extends Controller
 
             //Insert tags.
             foreach ($tags as $tag) {
-                if(!empty($tag)){
+                if (!empty($tag)) {
                     ThreadTags::create([
                         'tag' => $tag,
                         'thread_id' => $thread->id
@@ -111,6 +117,31 @@ class ForumController extends Controller
     }
 
     /**
+     * Handiling my TERRIBLE poll logic. <-- Need to improve greatly!!
+     */
+    private function handleThreadPoll(Request $request, $forum_id, $cleaned_string)
+    {
+        //Thread created without a poll.
+        $thread = Thread::create([
+            'forum_id' => $forum_id,
+            'thread_author' => Auth::id(),
+            'thread_subject' => $request->input('subject'),
+            'thread_subject_clean' => $cleaned_string,
+            'last_reply_date' => now(),
+            'last_poster_id' => Auth::id(),
+            'poll_title' => $request->input('poll-question'),
+
+        ]);
+
+        for($count = 8; $count >= 8; $count++)
+        {
+
+        }
+
+
+    }
+
+    /**
      * Show the threads on the forum specified.
      *
      * @param  int $forum_id
@@ -129,7 +160,7 @@ class ForumController extends Controller
             return view('forum.forum_threads', [
                 'threads' => $forum->threads()->orderBy('thread_announced', 'desc')
                     ->orderBy('thread_stuck', 'desc')
-                    ->orderBy('last_reply_date', 'desc')
+                    ->orderBy('last_reply_date', 'asc')
                     ->paginate(25)
             ]);
         } else {

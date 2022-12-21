@@ -28,6 +28,12 @@ return new class extends Migration
             $table->timestamp("last_reply_date");
             $table->integer("last_poster_id");
             $table->integer("reply_count")->default(1);
+            $table->string('poll_title')->nullable();
+            $table->string('poll_length')->nullable();
+            $table->integer('poll_start')->nullable();
+            $table->integer('poll_vote_change')->nullable();
+            $table->integer('poll_last_vote')->nullable();
+
             $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });

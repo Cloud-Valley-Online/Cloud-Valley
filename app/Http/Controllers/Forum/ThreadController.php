@@ -113,7 +113,7 @@ class ThreadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storepost(Request $request, $forum_id)
+    public function storepost(Request $request)
     {
         $thread = Thread::findOrfail($request->input('thread_id'));
 

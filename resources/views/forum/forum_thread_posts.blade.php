@@ -22,7 +22,7 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 15%;
+            top: 20%;
             width: 0;
             height: 0;
             border: 13px solid transparent;
@@ -42,7 +42,7 @@
             content: '';
             position: absolute;
             right: 0;
-            top: 15%;
+            top: 20%;
             width: 0;
             height: 0;
             border: 13px solid transparent;

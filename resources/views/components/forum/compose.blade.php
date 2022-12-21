@@ -4,7 +4,9 @@
 
     <x-head.tinymce-config-default />
 
-    <div class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
+    <script src="{{ asset('js/forum/compose.js') }}"></script>
+
+    <div x-data class="container posts-main-content-wrapper p-3 rounded" style="background: white;">
 
         <div class="row">
 
@@ -34,7 +36,8 @@
 
                         <li class="breadcrumb-item"><a href="/forum">{{ $forum->category->name }}</a></li>
 
-                        <li class="breadcrumb-item active"> <a href="/forum/{{ $forum->id }}/{{ $forum->forum_name_clean }}">{{ $forum->forum_name }}</a>
+                        <li class="breadcrumb-item active"> <a
+                                href="/forum/{{ $forum->id }}/{{ $forum->forum_name_clean }}">{{ $forum->forum_name }}</a>
                         </li>
 
                         <li class="breadcrumb-item active" aria-current="page"> New Thread </li>
@@ -60,7 +63,7 @@
                         </ul>
                     </div>
                 @endif
-
+                <!-- post area -->
                 <form method="post" action="/forum/storethread">
                     @csrf
                     <input type="text" name="subject" class="form-control mb-1" placeholder="Thread topic" required>
@@ -69,17 +72,45 @@
                     <textarea name="post" id="newthread"></textarea>
                     <input type="submit" class="btn btn-primary mt-1"></button>
                     <input type="hidden" name="forum_id" value={{ last(request()->segments()) }}>
-                </form>
+
 
             </div>
 
             <div class="col-sm-4">
 
-                Post options
+                <!-- Poll area -->
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
+                    <i class="fa-solid fa-square-poll-horizontal"></i> Add poll
+                </button>
 
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <div class="form-group" id="options">
+                            <label for="poll-question">Poll Question</label>
+                            <textarea class="form-control" name="poll-question" id="poll-question" rows="2"></textarea>
+                            <label for="option1">Options</label>
+                            <input type="text" name="option1" class="form-control">
+                            <input type="text" name="option2" id="option2" class="form-control d-none">
+                            <input type="text" name="option3" id="option3" class="form-control d-none">
+                            <input type="text" name="option4" id="option4" class="form-control d-none">
+                            <input type="text" name="option5" id="option5"class="form-control d-none">
+                            <input type="text" name="option6" id="option6"class="form-control d-none">
+                            <input type="text" name="option7" id="option7" class="form-control d-none">
+                            <input type="text" name="option8" id="option8" class="form-control d-none">
+                            <input type="text" name="option9" id="option9" class="form-control d-none">
+                            <input type="text" name="option10" id="option10" class="form-control d-none">
+                        </div>
+                        <a x-on:click="addOption()" class="btn btn-primary mt-1"><i class="fa-solid fa-plus"></i> Add
+                            more</a>
+                    </div>
+                    </form>
+                </div>
             </div>
 
         </div>
+
+    </div>
 
     </div>
 

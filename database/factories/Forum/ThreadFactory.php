@@ -24,8 +24,8 @@ class ThreadFactory extends Factory
             'thread_author' => 1,
             'thread_subject' => fake()->text(80),
             'thread_subject_clean' => fake()->text(80),
-            'last_reply_date' => '2022-12-01 00:00:00',
-            'last_poster_name' => 1,
+            'last_reply_date' => now(),
+            'last_poster_id' => 1,
             'reply_count'   =>  1,
         ];
     }
