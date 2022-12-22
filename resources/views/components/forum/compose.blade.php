@@ -72,12 +72,9 @@
                     <textarea name="post" id="newthread"></textarea>
                     <input type="submit" class="btn btn-primary mt-1"></button>
                     <input type="hidden" name="forum_id" value={{ last(request()->segments()) }}>
-
-
             </div>
 
             <div class="col-sm-4">
-
                 <!-- Poll area -->
                 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
                     aria-expanded="false" aria-controls="collapseExample">

@@ -40,6 +40,14 @@ class Thread extends Model
     }
 
      /**
+     * Get the poll options assiocated with Thread.
+     */
+    public function polloptions()
+    {
+        return $this->hasMany(PollOptions::class);
+    }
+
+     /**
      * Create a new factory instance for the model.
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory

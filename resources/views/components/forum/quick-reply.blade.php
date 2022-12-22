@@ -18,10 +18,10 @@
         </div>
     @endif
 
-    <div x-data="{ open: false }" class="wrapper">
+    <div x-data="{ open: true }" class="wrapper">
         <!-- Post area -->
         <div class="col-sm-3 thread-buttons">
-            <div class="row align-items-start">
+            <div class="row align-items-start" id="quick-reply">
                 <div class="col-12">
                     <div class="btn-group">
                         <button type="button" class="btn btn-primary">Reply</button>
@@ -51,7 +51,7 @@
                             </form>
                         </div>
                         <!-- Preview area -->
-                        <div x-data="{ open: false }" class="col-md-8 shadow rounded">
+                        <div class="col-md-8 shadow rounded">
                             <div class="row post-area p-2">
                                 <div class="col-sm-1 post-avi-side" style="width:150px;">
                                     <div class="row post-username">

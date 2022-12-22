@@ -80,19 +80,35 @@
                 <small class="tags">
                     @if ($tags)
                        @foreach ($tags as $tag)
-                           <a href="">#{{ $tag->tag }}</a>
+                           <a href="" class="text-decoration-none">#{{ $tag->tag }}</a>
                        @endforeach
                     @endif
                 </small>
+
+                <!-- Poll -->
+                <form action="" method="POST">
+                @if ($posts[0]->thread->poll_title)
+                    <div class="card card-body mt-4">
+                        <p>{{ $posts[0]->thread->poll_title }}</p>
+                       @foreach ($posts[0]->thread->polloptions as  $polloption)
+                           <div class="form-check">
+                            <input class="form-check-input" type="radio" name="polloptions">
+                            <label class="form-check-label">
+                            {{ $polloption->poll_option_text; }}
+                            </label>
+                          </div>
+                       @endforeach
+                    </div>
+                    <a href="#" class="btn btn-primary btn-sm mt-1">Vote</a>
+                @endif
+            </form>
             </div>
             @if (Auth::check())
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 thread-buttons">
                     <div class="row align-items-start">
                         <div class="col">
                             <div class="btn-group">
-                                <a href="#" class="btn btn-primary"><i class="fa-solid fa-lock"></i> Lock</a>
-                                <a href="#" class="btn btn-primary"><i class="fa-solid fa-note-sticky"></i> Sticky</a>
-                                <a href="#" class="btn btn-primary"><i class="fa-solid fa-reply-all"></i> Move</a>
+                                <a href="#" class="btn btn-primary"><i class="fa-solid fa-hammer"></i> Mod tools</a>
                             </div>
                         </div>
                     </div>
@@ -159,10 +175,11 @@
                                 <div class="col-sm-10">
                                     <div class="row post-buttons mt-2">
                                         <div class="col">
-                                            <button type="button" x-on:click="tinymce.activeEditor.execCommand('mceInsertContent', false, '<br>@quote:{{ userIdToUsername($post->post_author) }} </br>')" class="btn btn-sm btn-primary">Quote</button>
+                                            <button type="button" x-on:click="tinymce.activeEditor.execCommand('mceInsertContent', false, '<br>@quote:{{ userIdToUsername($post->post_author) }} </br>');" class="btn btn-sm btn-primary">Quote</button>
                                             <button type="button" class="btn btn-sm btn-primary">Tip</button>
                                             <button type="button" class="btn btn-sm btn-secondary">Edit</button>
                                             <button type="button" class="btn btn-sm btn-success">Delete</button>
+                                            <button type="button" class="btn btn-sm btn-success">React</button>
                                             <a href="/report">report</a>
                                         </div>
                                     </div>
@@ -236,9 +253,10 @@
                                                     <i class="fa-solid fa-face-smile" style="color:#feea00;"></i> online
                                                 </button>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                    <button type="button" class="btn btn-sm btn-primary">Tip</button>
+                                                    <button type="button" class="btn btn-sm btn-secondary">Edit</button>
+                                                    <button type="button" class="btn btn-sm btn-success">Delete</button>
+                                                    <button type="button" class="btn btn-sm btn-success">React</button>
                                                 </ul>
                                             </div>
                                         </div>
