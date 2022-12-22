@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Forum;
 use App\Models\Thread;
 use App\Models\Post;
+use App\Models\PollVotes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -154,5 +155,28 @@ class ThreadController extends Controller
         }
 
         return view('forum.components.quick-reply', ['thread' => $thread]);
+    }
+
+    /**
+     * Handle voting on polls
+     * May change to Ajax request later.
+     */
+    public function poll(Request $request)
+    {
+        $request->validate([
+            'poll' => 'required',
+        ]);
+
+        //verify poll exists on thread.
+
+
+        PollVotes::create([
+            'poll_option_id' => $request->input('poll'),
+            'vote_user_id'  =>  Auth::id(),
+            'vote_user_ip'  => $request->ip()
+        ]);
+
+        return redirect()->back();
+
     }
 }

@@ -79,29 +79,47 @@
                 <!-- tags -->
                 <small class="tags">
                     @if ($tags)
-                       @foreach ($tags as $tag)
-                           <a href="" class="text-decoration-none">#{{ $tag->tag }}</a>
-                       @endforeach
+                        @foreach ($tags as $tag)
+                            <a href="" class="text-decoration-none">#{{ $tag->tag }}</a>
+                        @endforeach
                     @endif
                 </small>
 
                 <!-- Poll -->
-                <form action="" method="POST">
-                @if ($posts[0]->thread->poll_title)
-                    <div class="card card-body mt-4">
-                        <p>{{ $posts[0]->thread->poll_title }}</p>
-                       @foreach ($posts[0]->thread->polloptions as  $polloption)
-                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="polloptions">
-                            <label class="form-check-label">
-                            {{ $polloption->poll_option_text; }}
-                            </label>
-                          </div>
-                       @endforeach
-                    </div>
-                    <a href="#" class="btn btn-primary btn-sm mt-1">Vote</a>
-                @endif
-            </form>
+                <form action="/forum/thread/poll" method="POST">
+                    @csrf
+                    @if ($posts[0]->thread->poll_title)
+                        <div class="card card-body mt-4">
+                            <p>{{ $posts[0]->thread->poll_title }}</p>
+                            @foreach ($posts[0]->thread->polloptions as $polloption)
+                                <div class="form-check">
+                                    @if ($polloption->votes->count())
+                                        @if ($polloption->votes[0]->vote_user_id == Auth::id())
+                                            <input class="form-check-input" type="radio" name="poll" value={{ $polloption->id }} checked>
+                                        @endif
+
+                                    @else
+                                        <input class="form-check-input" type="radio" name="poll" value={{ $polloption->id }}>
+                                    @endif
+                                    <label class="form-check-label">
+                                        {{ $polloption->poll_option_text }}
+                                    </label>
+                                </div>
+                            @endforeach
+                            <input type="hidden" name="thread_id" value={{ $posts[0]->thread->id }}>
+
+                            <div class="progress">
+                                huh
+                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                              <div class="progress">
+                                huh
+                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                              </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-sm" value="vote">
+                    @endif
+                </form>
             </div>
             @if (Auth::check())
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-2 thread-buttons">
@@ -119,8 +137,8 @@
 
         <div class="row thread-tools-area" style="border-bottom:1px solid #c8c9cb; ">
             <!-- Quick reply Component-->
-            @if(Auth::check())
-                <x-forum.quick-reply/>
+            @if (Auth::check())
+                <x-forum.quick-reply />
             @endif
         </div>
 
@@ -175,7 +193,9 @@
                                 <div class="col-sm-10">
                                     <div class="row post-buttons mt-2">
                                         <div class="col">
-                                            <button type="button" x-on:click="tinymce.activeEditor.execCommand('mceInsertContent', false, '<br>@quote:{{ userIdToUsername($post->post_author) }} </br>');" class="btn btn-sm btn-primary">Quote</button>
+                                            <button type="button"
+                                                x-on:click="tinymce.activeEditor.execCommand('mceInsertContent', false, '<br>@quote:{{ userIdToUsername($post->post_author) }} </br>');"
+                                                class="btn btn-sm btn-primary">Quote</button>
                                             <button type="button" class="btn btn-sm btn-primary">Tip</button>
                                             <button type="button" class="btn btn-sm btn-secondary">Edit</button>
                                             <button type="button" class="btn btn-sm btn-success">Delete</button>
@@ -272,7 +292,7 @@
                 </div>
             @else
                 <div class="alert alert-danger">Uh oh there was a problem, no posts were found! Please report this.</div>
-            @endif
+                @endif
                 <!-- End post logic -->
             </div>
         </div>

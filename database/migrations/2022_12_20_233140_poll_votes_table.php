@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('poll_option_id');
             $table->integer('vote_user_id');
-            $table->integer('vote_user_ip');
+            $table->ipAddress('vote_user_ip');
             $table->timestamps();
 
         });

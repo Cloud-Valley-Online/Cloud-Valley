@@ -13,4 +13,12 @@ class PollOptions extends Model
      * Allow mass assignment.
      */
     protected $guarded = [];
+
+    /**
+     * Get the votes on the poll.
+     */
+    public function votes()
+    {
+        return $this->hasMany(PollVotes::class, 'poll_option_id');
+    }
 }
